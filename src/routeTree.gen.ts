@@ -13,6 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppIndexRouteImport } from './routes/app/index'
+import { Route as AppHistoryRouteImport } from './routes/app/history'
+import { Route as AppReferRouteImport } from './routes/app/refer'
+import { Route as AppWalletRouteImport } from './routes/app/wallet'
 import { Route as AppTournamentIdRouteImport } from './routes/app/tournament.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +38,21 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppHistoryRoute = AppHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReferRoute = AppReferRouteImport.update({
+  id: '/refer',
+  path: '/refer',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppWalletRoute = AppWalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppTournamentIdRoute = AppTournamentIdRouteImport.update({
   id: '/tournament/$id',
   path: '/tournament/$id',
@@ -45,12 +63,18 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/app/history': typeof AppHistoryRoute
+  '/app/refer': typeof AppReferRoute
+  '/app/wallet': typeof AppWalletRoute
   '/app/': typeof AppIndexRoute
   '/app/tournament/$id': typeof AppTournamentIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/app/history': typeof AppHistoryRoute
+  '/app/refer': typeof AppReferRoute
+  '/app/wallet': typeof AppWalletRoute
   '/app': typeof AppIndexRoute
   '/app/tournament/$id': typeof AppTournamentIdRoute
 }
@@ -59,15 +83,42 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/app/history': typeof AppHistoryRoute
+  '/app/refer': typeof AppReferRoute
+  '/app/wallet': typeof AppWalletRoute
   '/app/': typeof AppIndexRoute
   '/app/tournament/$id': typeof AppTournamentIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/auth' | '/app/' | '/app/tournament/$id'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/auth'
+    | '/app/history'
+    | '/app/refer'
+    | '/app/wallet'
+    | '/app/'
+    | '/app/tournament/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/app' | '/app/tournament/$id'
-  id: '__root__' | '/' | '/app' | '/auth' | '/app/' | '/app/tournament/$id'
+  to:
+    | '/'
+    | '/auth'
+    | '/app/history'
+    | '/app/refer'
+    | '/app/wallet'
+    | '/app'
+    | '/app/tournament/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/auth'
+    | '/app/history'
+    | '/app/refer'
+    | '/app/wallet'
+    | '/app/'
+    | '/app/tournament/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,6 +157,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/history': {
+      id: '/app/history'
+      path: '/history'
+      fullPath: '/app/history'
+      preLoaderRoute: typeof AppHistoryRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/refer': {
+      id: '/app/refer'
+      path: '/refer'
+      fullPath: '/app/refer'
+      preLoaderRoute: typeof AppReferRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/wallet': {
+      id: '/app/wallet'
+      path: '/wallet'
+      fullPath: '/app/wallet'
+      preLoaderRoute: typeof AppWalletRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/tournament/$id': {
       id: '/app/tournament/$id'
       path: '/tournament/$id'
@@ -117,11 +189,17 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppHistoryRoute: typeof AppHistoryRoute
+  AppReferRoute: typeof AppReferRoute
+  AppWalletRoute: typeof AppWalletRoute
   AppIndexRoute: typeof AppIndexRoute
   AppTournamentIdRoute: typeof AppTournamentIdRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppHistoryRoute: AppHistoryRoute,
+  AppReferRoute: AppReferRoute,
+  AppWalletRoute: AppWalletRoute,
   AppIndexRoute: AppIndexRoute,
   AppTournamentIdRoute: AppTournamentIdRoute,
 }
