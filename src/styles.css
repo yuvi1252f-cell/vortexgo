@@ -5,11 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system — "Ember Studio"
- * Dark editorial professional theme. Charcoal surfaces, warm ember accent,
- * serif display + grotesk body.
+ * Design system — "VortexGo"
+ * Neon esports theme. Deep space-black surfaces, violet + cyan vortex accents.
  * All colors use oklch.
  */
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -56,55 +56,73 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --font-display: "Instrument Serif", serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Orbitron", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Rajdhani", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 1rem;
 
-  /* Dark editorial base */
-  --background: oklch(0.16 0.008 264);
-  --foreground: oklch(0.96 0.012 70);
-  --card: oklch(0.2 0.009 264);
-  --card-foreground: oklch(0.96 0.012 70);
-  --popover: oklch(0.2 0.009 264);
-  --popover-foreground: oklch(0.96 0.012 70);
+  /* Deep space base */
+  --background: oklch(0.13 0.03 285);
+  --foreground: oklch(0.97 0.008 285);
+  --card: oklch(0.18 0.04 288);
+  --card-foreground: oklch(0.97 0.008 285);
+  --popover: oklch(0.17 0.04 288);
+  --popover-foreground: oklch(0.97 0.008 285);
 
-  /* Ember accent */
-  --primary: oklch(0.72 0.16 55);
-  --primary-foreground: oklch(0.16 0.008 264);
-  --secondary: oklch(0.26 0.01 264);
-  --secondary-foreground: oklch(0.92 0.012 70);
-  --muted: oklch(0.24 0.009 264);
-  --muted-foreground: oklch(0.66 0.014 264);
-  --accent: oklch(0.72 0.16 55);
-  --accent-foreground: oklch(0.16 0.008 264);
+  /* Violet primary, cyan accent */
+  --primary: oklch(0.62 0.25 300);
+  --primary-foreground: oklch(0.99 0.005 285);
+  --primary-glow: oklch(0.75 0.2 305);
+  --secondary: oklch(0.24 0.05 288);
+  --secondary-foreground: oklch(0.95 0.01 285);
+  --muted: oklch(0.22 0.04 288);
+  --muted-foreground: oklch(0.72 0.03 285);
+  --accent: oklch(0.8 0.16 205);
+  --accent-foreground: oklch(0.15 0.03 285);
   --destructive: oklch(0.62 0.22 25);
-  --destructive-foreground: oklch(0.98 0.003 70);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.72 0.16 55);
+  --destructive-foreground: oklch(0.98 0.003 285);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.62 0.25 300);
 
-  --chart-1: oklch(0.72 0.16 55);
-  --chart-2: oklch(0.7 0.12 200);
-  --chart-3: oklch(0.62 0.18 320);
-  --chart-4: oklch(0.78 0.15 90);
-  --chart-5: oklch(0.6 0.1 250);
+  --chart-1: oklch(0.62 0.25 300);
+  --chart-2: oklch(0.8 0.16 205);
+  --chart-3: oklch(0.7 0.2 330);
+  --chart-4: oklch(0.75 0.18 150);
+  --chart-5: oklch(0.6 0.2 265);
 
-  --sidebar: oklch(0.19 0.009 264);
-  --sidebar-foreground: oklch(0.96 0.012 70);
-  --sidebar-primary: oklch(0.72 0.16 55);
-  --sidebar-primary-foreground: oklch(0.16 0.008 264);
-  --sidebar-accent: oklch(0.26 0.01 264);
-  --sidebar-accent-foreground: oklch(0.92 0.012 70);
-  --sidebar-border: oklch(1 0 0 / 8%);
-  --sidebar-ring: oklch(0.72 0.16 55);
+  --gradient-vortex: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    oklch(0.6 0.22 275) 45%,
+    var(--accent) 100%
+  );
+  --shadow-neon: 0 0 60px -12px oklch(0.62 0.25 300 / 55%);
+  --shadow-cyan: 0 0 60px -12px oklch(0.8 0.16 205 / 45%);
+
+  --sidebar: oklch(0.16 0.035 288);
+  --sidebar-foreground: oklch(0.97 0.008 285);
+  --sidebar-primary: oklch(0.62 0.25 300);
+  --sidebar-primary-foreground: oklch(0.99 0.005 285);
+  --sidebar-accent: oklch(0.24 0.05 288);
+  --sidebar-accent-foreground: oklch(0.95 0.01 285);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.62 0.25 300);
+}
+
+@theme inline {
+  --color-primary-glow: var(--primary-glow);
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -116,7 +134,7 @@
   }
 
   ::selection {
-    background-color: oklch(0.72 0.16 55 / 30%);
+    background-color: oklch(0.62 0.25 300 / 35%);
     color: var(--color-foreground);
   }
 }
@@ -130,15 +148,115 @@
     text-wrap: balance;
   }
 
-  .ember-glow {
-    box-shadow: 0 0 80px -20px oklch(0.72 0.16 55 / 45%);
+  .gradient-vortex {
+    background-image: var(--gradient-vortex);
   }
 
-  .grain {
-    background-image: radial-gradient(
-      circle at 50% 50%,
-      oklch(1 0 0 / 2%) 0%,
-      transparent 100%
-    );
+  .text-gradient-vortex {
+    background-image: var(--gradient-vortex);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .cyan-glow {
+    box-shadow: var(--shadow-cyan);
+  }
+
+  .neon-border {
+    border: 1px solid oklch(0.62 0.25 300 / 45%);
+    box-shadow:
+      0 0 0 1px oklch(0.8 0.16 205 / 10%),
+      0 0 40px -18px oklch(0.62 0.25 300 / 70%);
+  }
+
+  .hex-grid {
+    background-image:
+      linear-gradient(oklch(1 0 0 / 3.5%) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(1 0 0 / 3.5%) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .animate-float {
+    animation: vg-float 6s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: vg-spin 26s linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: vg-pulse 3.2s ease-in-out infinite;
+  }
+
+  .animate-rise {
+    animation: vg-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-marquee {
+    animation: vg-marquee 26s linear infinite;
   }
 }
+
+@keyframes vg-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes vg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes vg-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes vg-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes vg-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-spin-slow,
+  .animate-pulse-glow,
+  .animate-rise,
+  .animate-marquee {
+    animation: none;
+  }
+}
+
