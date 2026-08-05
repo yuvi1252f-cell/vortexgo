@@ -14,6 +14,7 @@ import { Route as AppRouteImport } from './routes/app'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AppHistoryRouteImport } from './routes/app/history'
+import { Route as AppProfileRouteImport } from './routes/app/profile'
 import { Route as AppReferRouteImport } from './routes/app/refer'
 import { Route as AppWalletRouteImport } from './routes/app/wallet'
 import { Route as AppTournamentIdRouteImport } from './routes/app/tournament.$id'
@@ -43,6 +44,11 @@ const AppHistoryRoute = AppHistoryRouteImport.update({
   path: '/history',
   getParentRoute: () => AppRoute,
 } as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppReferRoute = AppReferRouteImport.update({
   id: '/refer',
   path: '/refer',
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/app/history': typeof AppHistoryRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
   '/app/': typeof AppIndexRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/app/history': typeof AppHistoryRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
   '/app': typeof AppIndexRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/app/history': typeof AppHistoryRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
   '/app/': typeof AppIndexRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/app'
     | '/auth'
     | '/app/history'
+    | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
     | '/app/'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/app/history'
+    | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
     | '/app'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '/app'
     | '/auth'
     | '/app/history'
+    | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
     | '/app/'
@@ -164,6 +176,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppHistoryRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/profile': {
+      id: '/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/refer': {
       id: '/app/refer'
       path: '/refer'
@@ -190,6 +209,7 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppHistoryRoute: typeof AppHistoryRoute
+  AppProfileRoute: typeof AppProfileRoute
   AppReferRoute: typeof AppReferRoute
   AppWalletRoute: typeof AppWalletRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -198,6 +218,7 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppHistoryRoute: AppHistoryRoute,
+  AppProfileRoute: AppProfileRoute,
   AppReferRoute: AppReferRoute,
   AppWalletRoute: AppWalletRoute,
   AppIndexRoute: AppIndexRoute,
@@ -214,3 +235,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
