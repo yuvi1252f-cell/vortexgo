@@ -452,11 +452,11 @@ function VortexGoLanding() {
               </p>
               <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
                 <a
-                  href="/vortexgo.apk"
+                  href="/app"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl gradient-vortex px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-primary-foreground transition-transform hover:scale-[1.03]"
                 >
                   <Smartphone className="size-5" />
-                  Download APK (v1.0)
+                  Open VortexGo App
                 </a>
                 <a
                   href={WHATSAPP}
