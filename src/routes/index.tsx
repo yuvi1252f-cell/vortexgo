@@ -32,11 +32,11 @@ export const Route = createFileRoute("/")({
         content:
           "Join VortexGo: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
       },
-      { property: "og:title", content: "VortexGo — Play. Compete. Conquer." },
+      { property: "og:title", content: "VortexGo — Daily Skill-Based Gaming Tournaments & Rewards" },
       {
         property: "og:description",
         content:
-          "Daily skill-based tournaments, instant rewards and fair play. Enter the Vortex.",
+          "Join VortexGo: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
