@@ -1,332 +1,543 @@
 import { createFileRoute } from "@tanstack/react-router";
-import heroVisual from "@/assets/hero-visual.png";
-import workVisual from "@/assets/work-visual.png";
+import { useEffect, useState } from "react";
+import {
+  ArrowUp,
+  Coins,
+  Gamepad2,
+  Gauge,
+  Gift,
+  Headphones,
+  Menu,
+  MessageCircle,
+  Scale,
+  ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Trophy,
+  Users,
+  Wallet,
+  X,
+  Zap,
+} from "lucide-react";
+
+import logo from "@/assets/vortexgo-logo.png";
+import heroBg from "@/assets/vortex-hero.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ember Studio — Design & Engineering" },
+      { title: "VortexGo — Daily Skill-Based Gaming Tournaments & Rewards" },
       {
         name: "description",
         content:
-          "Ember Studio crafts brand systems, websites, and digital products for ambitious companies. A design and engineering practice built for clarity and craft.",
+          "Join VortexGo: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
       },
-      { property: "og:title", content: "Ember Studio — Design & Engineering" },
+      { property: "og:title", content: "VortexGo — Play. Compete. Conquer." },
       {
         property: "og:description",
         content:
-          "Brand systems, websites, and digital products for ambitious companies.",
+          "Daily skill-based tournaments, instant rewards and fair play. Enter the Vortex.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Index,
+  component: VortexGoLanding,
 });
 
-const services = [
+const WHATSAPP =
+  "https://chat.whatsapp.com/J8yJnG0vAgu0nmfSCVDXpf?s=cl&p=a&ilr=1";
+
+const NAV = [
+  { label: "Home", href: "#home" },
+  { label: "Why Us", href: "#features" },
+  { label: "How It Works", href: "#how" },
+  { label: "Stats", href: "#stats" },
+  { label: "Rewards", href: "#rewards" },
+  { label: "Download", href: "#download" },
+];
+
+const FEATURES = [
   {
-    no: "01",
-    title: "Brand Systems",
-    desc: "Identity, type, and visual languages that scale across every surface.",
+    icon: Scale,
+    title: "Fair Play Engine",
+    body: "Every match is monitored and scored on real in-game performance. Zero bots, zero bias.",
   },
   {
-    no: "02",
-    title: "Web Experiences",
-    desc: "Marketing sites and product interfaces engineered for speed and feel.",
+    icon: Gauge,
+    title: "Lightning Fast",
+    body: "Built on modern tech for buttery lobbies, instant match joins and no lag drops.",
   },
   {
-    no: "03",
-    title: "Product Design",
-    desc: "From zero-to-one flows to mature design systems your team can build on.",
+    icon: Trophy,
+    title: "Free Entry Matches",
+    body: "Pick any contest, any time slot, and jump in free. Skill decides the winner, not luck.",
   },
   {
-    no: "04",
-    title: "Engineering",
-    desc: "Type-safe full-stack builds shipped on modern, edge-first runtimes.",
+    icon: Wallet,
+    title: "Instant Withdrawal",
+    body: "Move winnings to UPI or redeem gift cards within minutes, 24 hours a day.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secure & Private",
+    body: "Encrypted accounts, privacy-first setup and verified payouts on every single win.",
+  },
+  {
+    icon: Headphones,
+    title: "24/7 Support",
+    body: "Real humans on WhatsApp around the clock, so you are never stuck mid-tournament.",
   },
 ];
 
-const work = [
+const STEPS = [
   {
-    client: "Northwind",
-    project: "Rebrand & marketing site",
-    year: "2025",
+    icon: Smartphone,
+    step: "01",
+    title: "Download the App",
+    body: "Grab the VortexGo APK and install in under a minute.",
   },
   {
-    client: "Lumen Health",
-    project: "Product design system",
-    year: "2025",
+    icon: Users,
+    step: "02",
+    title: "Create Account",
+    body: "Sign up in 30 seconds with a secure, privacy-first setup.",
   },
   {
-    client: "Atlas Capital",
-    project: "Investor platform",
-    year: "2024",
+    icon: Gamepad2,
+    step: "03",
+    title: "Join a Tournament",
+    body: "Choose your slot, enter the lobby and drop into the match.",
   },
   {
-    client: "Verve Studio",
-    project: "Identity & web",
-    year: "2024",
+    icon: Coins,
+    step: "04",
+    title: "Win & Withdraw",
+    body: "Climb the leaderboard and cash out instantly to UPI.",
   },
 ];
 
-const stats = [
-  { value: "120+", label: "Projects shipped" },
-  { value: "14", label: "Years of craft" },
-  { value: "40+", label: "Teams partnered" },
-  { value: "9", label: "Awards earned" },
+const STATS = [
+  { icon: Gamepad2, value: "50,000+", label: "Tournaments Hosted" },
+  { icon: Users, value: "100K+", label: "Active Gamers" },
+  { icon: Coins, value: "1.2L+", label: "Winnings Distributed" },
+  { icon: Gift, value: "60K+", label: "Rewards Claimed" },
 ];
 
-function Index() {
+const TICKER = [
+  "DAILY TOURNAMENTS",
+  "INSTANT PAYOUTS",
+  "FAIR PLAY",
+  "FREE ENTRY",
+  "REAL REWARDS",
+  "24/7 SUPPORT",
+];
+
+function VortexGoLanding() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background text-foreground antialiased">
-      {/* Nav */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <a href="#" className="flex items-center gap-2">
-            <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary ember-glow" />
-            <span className="font-display text-2xl leading-none tracking-tight">
-              Ember
+    <div className="min-h-screen bg-background text-foreground">
+      {/* NAV */}
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "border-b border-border bg-background/85 backdrop-blur-xl"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6">
+          <a href="#home" className="flex min-w-0 items-center gap-2">
+            <img
+              src={logo}
+              alt="VortexGo logo"
+              width={48}
+              height={48}
+              className="h-11 w-11 shrink-0 object-contain drop-shadow-[0_0_14px_oklch(0.62_0.25_300/0.7)]"
+            />
+            <span className="truncate font-display text-lg font-black tracking-widest text-gradient-vortex">
+              VORTEXGO
             </span>
           </a>
-          <div className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-            <a href="#work" className="transition-colors hover:text-foreground">
-              Work
-            </a>
+
+          <nav className="hidden items-center gap-7 lg:flex">
+            {NAV.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm font-semibold uppercase tracking-wider text-muted-foreground transition-colors hover:text-accent"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex shrink-0 items-center gap-2">
             <a
-              href="#services"
-              className="transition-colors hover:text-foreground"
+              href="#download"
+              className="hidden rounded-full gradient-vortex px-5 py-2 font-display text-xs font-bold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105 sm:inline-block"
             >
-              Services
+              Get App
             </a>
-            <a href="#about" className="transition-colors hover:text-foreground">
-              Studio
-            </a>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              className="flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 font-display text-xs font-bold uppercase tracking-widest lg:hidden"
+            >
+              {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+              Menu
+            </button>
           </div>
-          <a
-            href="#contact"
-            className="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Start a project
-          </a>
-        </nav>
+        </div>
+
+        {menuOpen && (
+          <div className="border-t border-border bg-card/95 backdrop-blur-xl lg:hidden">
+            <nav className="mx-auto flex max-w-6xl flex-col px-4 py-2 sm:px-6">
+              {NAV.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="border-b border-border py-3 font-display text-sm font-bold uppercase tracking-wider text-foreground last:border-0 hover:text-accent"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
       </header>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-6xl px-6 pt-20 pb-24 md:pt-28 md:pb-32">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Design & Engineering Studio
-            </span>
-            <h1 className="mt-8 font-display text-5xl leading-[1.02] tracking-tight text-balance sm:text-6xl md:text-7xl">
-              We build brands and products with{" "}
-              <span className="italic text-primary">uncommon</span> craft.
+      <main id="home">
+        {/* HERO */}
+        <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
+          <img
+            src={heroBg}
+            alt=""
+            aria-hidden="true"
+            width={1536}
+            height={1024}
+            className="absolute inset-0 h-full w-full object-cover opacity-45"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
+          <div className="absolute inset-0 hex-grid opacity-70" />
+          <div className="absolute left-1/2 top-24 -z-0 size-[420px] -translate-x-1/2 rounded-full bg-primary/25 blur-[130px] animate-pulse-glow" />
+
+          <div className="relative mx-auto max-w-6xl px-4 text-center sm:px-6">
+            <img
+              src={logo}
+              alt="VortexGo esports logo"
+              width={816}
+              height={816}
+              className="mx-auto h-40 w-40 animate-float object-contain drop-shadow-[0_0_45px_oklch(0.62_0.25_300/0.65)] sm:h-56 sm:w-56"
+            />
+
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent backdrop-blur">
+              <Sparkles className="size-3.5" />
+              Season 1 Live Now
+            </div>
+
+            <h1 className="mt-5 font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
+              Enter The <span className="text-gradient-vortex">Vortex</span>
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Ember is a small studio of designers and engineers partnering with
-              ambitious companies to ship work that feels considered from the
-              first pixel to the last commit.
+            <p className="mt-3 font-display text-sm font-bold uppercase tracking-[0.3em] text-accent sm:text-base">
+              Play · Compete · Conquer
             </p>
-            <div className="mt-9 flex flex-wrap items-center gap-4">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground text-balance sm:text-lg">
+              VortexGo is your competitive gaming destination. Join daily
+              skill-based tournaments, earn real rewards instantly, and rise up
+              a leaderboard built purely on skill.
+            </p>
+
+            <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
               <a
-                href="#work"
-                className="rounded-full bg-primary px-7 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                href="#download"
+                className="group inline-flex items-center justify-center gap-2 rounded-2xl gradient-vortex px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-primary-foreground neon-glow transition-transform hover:scale-[1.03]"
               >
-                See selected work
+                <Smartphone className="size-5" />
+                Download App
               </a>
               <a
-                href="#contact"
-                className="rounded-full border border-border px-7 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-accent/40 bg-card/70 px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-accent backdrop-blur transition-transform hover:scale-[1.03] cyan-glow"
               >
-                Book a call
+                <MessageCircle className="size-5" />
+                WhatsApp Support
               </a>
             </div>
           </div>
-        </div>
-        <div className="relative mx-auto max-w-6xl px-6 pb-4">
-          <div className="overflow-hidden rounded-2xl border border-border">
-            <img
-              src={heroVisual}
-              alt="Abstract ember-lit metal ribbons representing the studio's craft"
-              width={1600}
-              height={1008}
-              className="h-[240px] w-full object-cover sm:h-[360px] md:h-[460px]"
-            />
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Stats */}
-      <section className="border-y border-border bg-card/40">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px px-6 md:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label} className="py-10 md:py-12">
-              <div className="font-display text-5xl text-primary md:text-6xl">
-                {s.value}
-              </div>
-              <div className="mt-2 text-sm text-muted-foreground">
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Services */}
-      <section id="services" className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
-            What we do
-          </h2>
-          <p className="max-w-sm text-muted-foreground">
-            Four disciplines, one team. We work across the full lifecycle so the
-            work holds together end to end.
-          </p>
-        </div>
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border sm:grid-cols-2">
-          {services.map((s) => (
-            <div
-              key={s.no}
-              className="group bg-card p-8 transition-colors hover:bg-secondary md:p-10"
-            >
-              <div className="flex items-baseline justify-between">
-                <h3 className="font-display text-3xl">{s.title}</h3>
-                <span className="text-sm text-muted-foreground">{s.no}</span>
-              </div>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
-                {s.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Work */}
-      <section id="work" className="border-y border-border bg-card/30">
-        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
-              Selected work
-            </h2>
-            <a
-              href="#contact"
-              className="text-sm text-primary transition-opacity hover:opacity-80"
-            >
-              View all engagements →
-            </a>
-          </div>
-
-          <div className="mt-12 overflow-hidden rounded-2xl border border-border">
-            <img
-              src={workVisual}
-              alt="Studio space lit by a single warm amber beam"
-              width={1200}
-              height={912}
-              loading="lazy"
-              className="h-[200px] w-full object-cover sm:h-[300px]"
-            />
-          </div>
-
-          <div className="mt-px grid gap-px border-b border-l border-border sm:grid-cols-2">
-            {work.map((w) => (
-              <a
-                key={w.client}
-                href="#contact"
-                className="group flex items-center justify-between border-r border-t border-border p-7 transition-colors hover:bg-secondary md:p-9"
+        {/* TICKER */}
+        <div className="relative overflow-hidden border-y border-border bg-card/40 py-3">
+          <div className="flex w-max animate-marquee gap-10 pr-10">
+            {[...TICKER, ...TICKER].map((t, i) => (
+              <span
+                key={`${t}-${i}`}
+                className="flex items-center gap-3 font-display text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground"
               >
-                <div>
-                  <div className="font-display text-2xl">{w.client}</div>
-                  <div className="mt-1 text-sm text-muted-foreground">
-                    {w.project}
-                  </div>
-                </div>
-                <div className="text-sm text-muted-foreground transition-colors group-hover:text-primary">
-                  {w.year}
-                </div>
-              </a>
+                <Zap className="size-3.5 text-accent" />
+                {t}
+              </span>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* About */}
-      <section id="about" className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
-              A studio, not a factory
-            </h2>
-          </div>
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground md:col-span-7">
-            <p>
-              We keep Ember deliberately small. Senior practitioners on every
-              project, no handoffs to a junior bench, no work lost in
-              translation between departments.
-            </p>
-            <p>
-              That means fewer clients, deeper partnerships, and work we're
-              proud to put our name on. We'd rather build one thing well than
-              ten things fast.
-            </p>
-            <div className="flex flex-wrap gap-3 pt-4">
-              {["Brand", "Web", "Product", "Engineering", "Strategy"].map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full border border-border px-4 py-1.5 text-sm text-foreground"
+        {/* FEATURES */}
+        <section id="features" className="relative py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHeading
+              kicker="Why VortexGo"
+              title="Built For Real Gamers"
+              sub="Trusted by real players, engineered for fair play."
+            />
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {FEATURES.map(({ icon: Icon, title, body }) => (
+                <article
+                  key={title}
+                  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:neon-border"
                 >
-                  {t}
-                </span>
+                  <div className="absolute -right-10 -top-10 size-28 rounded-full bg-primary/20 blur-2xl opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="relative flex size-12 items-center justify-center rounded-xl gradient-vortex">
+                    <Icon className="size-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="relative mt-5 font-display text-lg font-bold uppercase tracking-wide">
+                    {title}
+                  </h3>
+                  <p className="relative mt-2 text-base leading-relaxed text-muted-foreground">
+                    {body}
+                  </p>
+                </article>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA / Contact */}
-      <section
-        id="contact"
-        className="border-t border-border bg-card/40"
-      >
-        <div className="mx-auto max-w-4xl px-6 py-24 text-center md:py-32">
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary ember-glow" />
-          <h2 className="mt-8 font-display text-5xl leading-[1.05] tracking-tight text-balance sm:text-6xl">
-            Have something worth building well?
-          </h2>
-          <p className="mx-auto mt-6 max-w-md text-lg text-muted-foreground">
-            Tell us about it. We take on a handful of new partners each quarter.
+        {/* HOW IT WORKS */}
+        <section id="how" className="relative overflow-hidden py-16 sm:py-24">
+          <div className="absolute left-1/2 top-1/2 size-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/15 animate-spin-slow" />
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHeading
+              kicker="How It Works"
+              title="Four Steps To Your First Win"
+              sub="From install to instant payout in a single evening."
+            />
+            <div className="relative mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {STEPS.map(({ icon: Icon, step, title, body }) => (
+                <article
+                  key={step}
+                  className="relative rounded-2xl border border-border bg-card/80 p-6 backdrop-blur transition-transform hover:-translate-y-1.5"
+                >
+                  <span className="font-display text-4xl font-black text-primary/30">
+                    {step}
+                  </span>
+                  <div className="mt-3 flex size-11 items-center justify-center rounded-full border border-accent/40 bg-accent/10">
+                    <Icon className="size-5 text-accent" />
+                  </div>
+                  <h3 className="mt-4 font-display text-base font-bold uppercase tracking-wide">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-base text-muted-foreground">{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* STATS */}
+        <section
+          id="stats"
+          className="relative overflow-hidden border-y border-border py-16 sm:py-20"
+        >
+          <img
+            src={heroBg}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            width={1536}
+            height={1024}
+            className="absolute inset-0 h-full w-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-background/70" />
+          <div className="relative mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 sm:px-6 lg:grid-cols-4">
+            {STATS.map(({ icon: Icon, value, label }) => (
+              <div key={label} className="text-center">
+                <Icon className="mx-auto size-7 text-accent" />
+                <p className="mt-3 font-display text-3xl font-black tracking-tight sm:text-4xl">
+                  {value}
+                </p>
+                <p className="mt-1 text-sm font-semibold uppercase tracking-widest text-accent/80">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* REWARDS */}
+        <section id="rewards" className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHeading
+              kicker="Rewards"
+              title="Win Real. Withdraw Fast."
+              sub="Cash, gift cards and in-game credits — your choice."
+            />
+            <div className="mt-10 grid gap-5 lg:grid-cols-3">
+              {[
+                {
+                  icon: Wallet,
+                  title: "UPI & Paytm",
+                  body: "Direct bank transfers processed within minutes of your win.",
+                },
+                {
+                  icon: Gift,
+                  title: "Gift Cards",
+                  body: "Redeem winnings for popular gaming and shopping gift cards.",
+                },
+                {
+                  icon: Trophy,
+                  title: "Season Leaderboard",
+                  body: "Top the monthly rankings for bonus prize pools and badges.",
+                },
+              ].map(({ icon: Icon, title, body }) => (
+                <article
+                  key={title}
+                  className="rounded-2xl border border-border bg-gradient-to-b from-card to-background p-7 transition-all hover:neon-border"
+                >
+                  <Icon className="size-8 text-primary" />
+                  <h3 className="mt-4 font-display text-lg font-bold uppercase tracking-wide">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-base text-muted-foreground">{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* DOWNLOAD CTA */}
+        <section id="download" className="px-4 pb-20 sm:px-6">
+          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-primary/30 bg-card/70 px-6 py-14 text-center backdrop-blur neon-glow sm:px-12">
+            <div className="absolute inset-0 hex-grid opacity-60" />
+            <div className="absolute -left-16 -top-16 size-56 rounded-full bg-primary/25 blur-[90px]" />
+            <div className="absolute -bottom-16 -right-16 size-56 rounded-full bg-accent/20 blur-[90px]" />
+            <div className="relative">
+              <img
+                src={logo}
+                alt="VortexGo app icon"
+                loading="lazy"
+                width={816}
+                height={816}
+                className="mx-auto h-24 w-24 animate-float object-contain"
+              />
+              <h2 className="mt-6 font-display text-3xl font-black uppercase tracking-tight sm:text-4xl">
+                Get The <span className="text-gradient-vortex">VortexGo</span>{" "}
+                App
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">
+                Tap below to download the Android app and start competing in
+                today's tournaments. Support is one message away.
+              </p>
+              <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
+                <a
+                  href="/vortexgo.apk"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl gradient-vortex px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-primary-foreground transition-transform hover:scale-[1.03]"
+                >
+                  <Smartphone className="size-5" />
+                  Download APK (v1.0)
+                </a>
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-accent/40 px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-accent transition-transform hover:scale-[1.03]"
+                >
+                  <MessageCircle className="size-5" />
+                  Join WhatsApp Support
+                </a>
+              </div>
+              <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
+                18+ · Skill-based gaming · Play responsibly
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* FOOTER */}
+      <footer className="border-t border-border bg-card/40 py-10">
+        <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
+          <img
+            src={logo}
+            alt="VortexGo"
+            loading="lazy"
+            width={816}
+            height={816}
+            className="mx-auto h-14 w-14 object-contain"
+          />
+          <nav className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2">
+            {NAV.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm font-semibold uppercase tracking-wider text-muted-foreground hover:text-accent"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <p className="mt-5 text-sm text-muted-foreground">
+            © {new Date().getFullYear()}{" "}
+            <span className="font-semibold text-foreground">VortexGo</span>. All
+            rights reserved.
           </p>
-          <a
-            href="mailto:hello@emberstudio.com"
-            className="mt-9 inline-flex rounded-full bg-primary px-8 py-3.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            hello@emberstudio.com
-          </a>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-10 text-sm text-muted-foreground md:flex-row">
-          <div className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 rounded-full bg-primary" />
-            <span className="font-display text-xl text-foreground">Ember</span>
-          </div>
-          <p>© {new Date().getFullYear()} Ember Studio. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="transition-colors hover:text-foreground">
-              Instagram
-            </a>
-            <a href="#" className="transition-colors hover:text-foreground">
-              Dribbble
-            </a>
-            <a href="#" className="transition-colors hover:text-foreground">
-              LinkedIn
-            </a>
-          </div>
         </div>
       </footer>
+
+      <a
+        href="#home"
+        aria-label="Back to top"
+        className="fixed bottom-5 right-5 z-40 flex size-12 items-center justify-center rounded-xl gradient-vortex text-primary-foreground neon-glow transition-transform hover:scale-110"
+      >
+        <ArrowUp className="size-5" />
+      </a>
+    </div>
+  );
+}
+
+function SectionHeading({
+  kicker,
+  title,
+  sub,
+}: {
+  kicker: string;
+  title: string;
+  sub: string;
+}) {
+  return (
+    <div className="text-center">
+      <span className="font-display text-xs font-bold uppercase tracking-[0.35em] text-accent">
+        {kicker}
+      </span>
+      <h2 className="mt-3 font-display text-3xl font-black uppercase tracking-tight text-balance sm:text-4xl">
+        {title}
+      </h2>
+      <div className="mx-auto mt-4 h-1 w-20 rounded-full gradient-vortex" />
+      <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground text-balance">
+        {sub}
+      </p>
     </div>
   );
 }
