@@ -14,6 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
+      app_settings: {
+        Row: {
+          apk_url: string
+          app_version: string
+          coin_rate: number
+          created_at: string
+          id: number
+          marquee: string
+          min_deposit: number
+          min_withdraw: number
+          payee_name: string
+          payment_window_seconds: number
+          qr_url: string | null
+          support_url: string
+          updated_at: string
+          upi_id: string
+        }
+        Insert: {
+          apk_url?: string
+          app_version?: string
+          coin_rate?: number
+          created_at?: string
+          id?: number
+          marquee?: string
+          min_deposit?: number
+          min_withdraw?: number
+          payee_name?: string
+          payment_window_seconds?: number
+          qr_url?: string | null
+          support_url?: string
+          updated_at?: string
+          upi_id?: string
+        }
+        Update: {
+          apk_url?: string
+          app_version?: string
+          coin_rate?: number
+          created_at?: string
+          id?: number
+          marquee?: string
+          min_deposit?: number
+          min_withdraw?: number
+          payee_name?: string
+          payment_window_seconds?: number
+          qr_url?: string | null
+          support_url?: string
+          updated_at?: string
+          upi_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -184,10 +235,14 @@ export type Database = {
         Row: {
           amount: number
           created_at: string
+          expires_at: string | null
           id: string
           method: string | null
           note: string | null
           reference: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          screenshot_url: string | null
           status: Database["public"]["Enums"]["txn_status"]
           type: Database["public"]["Enums"]["txn_type"]
           upi_id: string | null
@@ -196,10 +251,14 @@ export type Database = {
         Insert: {
           amount: number
           created_at?: string
+          expires_at?: string | null
           id?: string
           method?: string | null
           note?: string | null
           reference?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          screenshot_url?: string | null
           status?: Database["public"]["Enums"]["txn_status"]
           type: Database["public"]["Enums"]["txn_type"]
           upi_id?: string | null
@@ -208,10 +267,14 @@ export type Database = {
         Update: {
           amount?: number
           created_at?: string
+          expires_at?: string | null
           id?: string
           method?: string | null
           note?: string | null
           reference?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          screenshot_url?: string | null
           status?: Database["public"]["Enums"]["txn_status"]
           type?: Database["public"]["Enums"]["txn_type"]
           upi_id?: string | null
@@ -242,6 +305,67 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      admin_adjust_wallet: {
+        Args: {
+          p_amount: number
+          p_bucket: string
+          p_note?: string
+          p_user: string
+        }
+        Returns: undefined
+      }
+      admin_review_transaction: {
+        Args: { p_approve: boolean; p_note?: string; p_txn: string }
+        Returns: {
+          amount: number
+          created_at: string
+          expires_at: string | null
+          id: string
+          method: string | null
+          note: string | null
+          reference: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          screenshot_url: string | null
+          status: Database["public"]["Enums"]["txn_status"]
+          type: Database["public"]["Enums"]["txn_type"]
+          upi_id: string | null
+          user_id: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "transactions"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      admin_set_entry_result: {
+        Args: {
+          p_entry: string
+          p_kills: number
+          p_prize: number
+          p_rank: number
+        }
+        Returns: undefined
+      }
+      admin_transactions: {
+        Args: { p_status?: Database["public"]["Enums"]["txn_status"] }
+        Returns: {
+          amount: number
+          created_at: string
+          id: string
+          method: string
+          note: string
+          phone: string
+          reference: string
+          screenshot_url: string
+          status: Database["public"]["Enums"]["txn_status"]
+          type: Database["public"]["Enums"]["txn_type"]
+          upi_id: string
+          user_id: string
+          username: string
+        }[]
+      }
       get_room_credentials: {
         Args: { p_tournament: string }
         Returns: {
@@ -282,10 +406,14 @@ export type Database = {
         Returns: {
           amount: number
           created_at: string
+          expires_at: string | null
           id: string
           method: string | null
           note: string | null
           reference: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          screenshot_url: string | null
           status: Database["public"]["Enums"]["txn_status"]
           type: Database["public"]["Enums"]["txn_type"]
           upi_id: string | null
