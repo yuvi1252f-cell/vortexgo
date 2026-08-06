@@ -96,7 +96,7 @@ function EntryRow({
     const { error } = await supabase.rpc("admin_set_entry_result", {
       p_entry: entry.id,
       p_kills: kills,
-      p_rank: rank || null,
+      p_rank: rank || 0,
       p_prize: prize,
     });
     setBusy(false);
