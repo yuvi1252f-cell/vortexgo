@@ -19,6 +19,41 @@ export function useProfile() {
   });
 }
 
+export function useSettings() {
+  return useQuery({
+    queryKey: ["settings"],
+    staleTime: 60_000,
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("app_settings")
+        .select("*")
+        .eq("id", 1)
+        .maybeSingle();
+      if (error) throw error;
+      return data;
+    },
+  });
+}
+
+export function useIsAdmin() {
+  const { user } = useAuth();
+  return useQuery({
+    queryKey: ["is-admin", user?.id],
+    enabled: !!user,
+    staleTime: 60_000,
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", user!.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      if (error) throw error;
+      return !!data;
+    },
+  });
+}
+
 export function useTournaments() {
   return useQuery({
     queryKey: ["tournaments"],
