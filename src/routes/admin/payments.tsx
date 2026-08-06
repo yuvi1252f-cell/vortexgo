@@ -47,8 +47,8 @@ function AdminPayments() {
     const { error } = await supabase.rpc("admin_review_transaction", {
       p_txn: id,
       p_approve: approve,
-      p_note: null,
     });
+
     setBusy(null);
     if (error) {
       toast.error(error.message.replace(/^.*?:\s*/, ""));
