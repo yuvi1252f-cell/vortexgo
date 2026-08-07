@@ -75,8 +75,9 @@ function AdminSettings() {
       .update({
         ...form,
         qr_url: form.qr_url.trim() || null,
-        maintenance_message: form.maintenance_message.trim() || null,
-        update_notice: form.update_notice.trim() || null,
+        maintenance_message: form.maintenance_message.trim(),
+        update_notice: form.update_notice.trim(),
+
       })
       .eq("id", 1);
     setBusy(false);
