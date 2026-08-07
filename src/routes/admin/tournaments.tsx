@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Loader2, Pencil, Plus, Trash2 } from "lucide-react";
+import { Eye, EyeOff, Loader2, Pencil, Plus, Trash2 } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { CATEGORY_LABEL, MODE_LABEL, formatMatchTime } from "@/lib/tournament";
@@ -28,6 +28,8 @@ type Form = {
   room_id: string;
   room_password: string;
   status: string;
+  published: boolean;
+  room_reveal_minutes: number;
 };
 
 function localInput(iso?: string) {
@@ -52,6 +54,8 @@ const EMPTY: Form = {
   room_id: "",
   room_password: "",
   status: "upcoming",
+  published: true,
+  room_reveal_minutes: 10,
 };
 
 function AdminTournaments() {
@@ -98,6 +102,8 @@ function AdminTournaments() {
       room_id: form.room_id.trim() || null,
       room_password: form.room_password.trim() || null,
       status: form.status as never,
+      published: form.published,
+      room_reveal_minutes: form.room_reveal_minutes,
     };
     const res = form.id
       ? await supabase.from("tournaments").update(payload).eq("id", form.id)
@@ -107,8 +113,26 @@ function AdminTournaments() {
       toast.error(res.error.message);
       return;
     }
+    if (!form.id && form.published) {
+      await supabase.from("notifications").insert({
+        title: "New tournament live",
+        body: `${payload.title} — entry ${payload.entry_fee} coins, prize ${payload.prize_pool}. Join now!`,
+        kind: "tournament",
+      });
+    }
     toast.success(form.id ? "Match updated" : "Match created");
     setForm(null);
+    qc.invalidateQueries({ queryKey: ["admin-tournaments"] });
+    qc.invalidateQueries({ queryKey: ["tournaments"] });
+  }
+
+  async function togglePublish(id: string, published: boolean) {
+    const { error } = await supabase.from("tournaments").update({ published }).eq("id", id);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    toast.success(published ? "Match published" : "Match hidden");
     qc.invalidateQueries({ queryKey: ["admin-tournaments"] });
     qc.invalidateQueries({ queryKey: ["tournaments"] });
   }
@@ -130,7 +154,7 @@ function AdminTournaments() {
         <h1 className="font-display text-lg font-black uppercase tracking-widest">Matches</h1>
         <button
           onClick={() => setForm({ ...EMPTY, match_time: localInput() })}
-          className="flex items-center gap-1 rounded-xl gradient-vortex px-3 py-2 text-[11px] font-black uppercase tracking-wide text-primary-foreground"
+          className="flex items-center gap-1 rounded-xl gradient-gold px-3 py-2 text-[11px] font-black uppercase tracking-wide text-primary-foreground"
         >
           <Plus className="size-3.5" /> New
         </button>
@@ -186,6 +210,22 @@ function AdminTournaments() {
               onChange={(v) => set("room_password", v)}
             />
           </div>
+          <div className="grid grid-cols-2 gap-2">
+            <Num
+              label="Room reveal (min before)"
+              value={form.room_reveal_minutes}
+              onChange={(v) => set("room_reveal_minutes", v)}
+            />
+            <Select
+              label="Visibility"
+              value={form.published ? "published" : "hidden"}
+              onChange={(v) => set("published", v === "published")}
+              options={[
+                { value: "published", label: "Published" },
+                { value: "hidden", label: "Hidden" },
+              ]}
+            />
+          </div>
           <Select
             label="Status"
             value={form.status}
@@ -212,7 +252,7 @@ function AdminTournaments() {
             <button
               onClick={save}
               disabled={busy}
-              className="flex flex-1 items-center justify-center gap-2 rounded-xl gradient-vortex py-2.5 font-display text-xs font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl gradient-gold py-2.5 font-display text-xs font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
             >
               {busy && <Loader2 className="size-4 animate-spin" />} Save
             </button>
@@ -238,10 +278,19 @@ function AdminTournaments() {
                 </p>
                 <p className="mt-1 text-[11px] text-muted-foreground">
                   Fee {t.entry_fee} · Pool {t.prize_pool} · Kill {t.per_kill} · {t.filled_slots}/
-                  {t.total_slots} · {t.status}
+                  {t.total_slots} · {t.status} · {t.published ? "published" : "hidden"}
                 </p>
               </div>
               <div className="flex gap-1">
+                <button
+                  onClick={() => togglePublish(t.id, !t.published)}
+                  aria-label={t.published ? "Hide match" : "Publish match"}
+                  className={`flex size-9 items-center justify-center rounded-lg border ${
+                    t.published ? "border-accent/40 text-accent" : "border-border text-muted-foreground"
+                  }`}
+                >
+                  {t.published ? <Eye className="size-4" /> : <EyeOff className="size-4" />}
+                </button>
                 <button
                   onClick={() =>
                     setForm({
@@ -261,6 +310,8 @@ function AdminTournaments() {
                       room_id: t.room_id ?? "",
                       room_password: t.room_password ?? "",
                       status: t.status,
+                      published: t.published,
+                      room_reveal_minutes: t.room_reveal_minutes,
                     })
                   }
                   aria-label="Edit"

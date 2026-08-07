@@ -85,7 +85,7 @@ function WalletPage() {
     }
     setBusy(true);
     try {
-      const uri = upiUri(settings.upi_id, settings.payee_name || "VortexGo", amount, `VortexGo ${amount}`);
+      const uri = upiUri(settings.upi_id, settings.payee_name || "YUVIX", amount, `YUVIX ${amount}`);
       const qr = settings.qr_url ? settings.qr_url : await upiQrDataUrl(uri);
       setSession({ amount, uri, qr });
       setLeft(windowSec);
@@ -166,7 +166,7 @@ function WalletPage() {
 
   return (
     <div className="space-y-4">
-      <section className="relative overflow-hidden rounded-2xl border border-primary/30 bg-card p-4 neon-glow">
+      <section className="relative overflow-hidden rounded-2xl border border-primary/30 bg-card p-4 glow-gold">
         <div className="absolute -right-10 -top-10 size-36 rounded-full bg-primary/25 blur-[70px]" />
         <p className="relative flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-accent">
           <Wallet2 className="size-4" /> My Wallet
@@ -197,7 +197,7 @@ function WalletPage() {
             key={t}
             onClick={() => setTab(t)}
             className={`rounded-lg py-2 font-display text-xs font-bold uppercase tracking-widest transition-colors ${
-              tab === t ? "gradient-vortex text-primary-foreground" : "text-muted-foreground"
+              tab === t ? "gradient-gold text-primary-foreground" : "text-muted-foreground"
             }`}
           >
             {t === "add" ? "Add Money" : "Withdraw"}
@@ -239,7 +239,7 @@ function WalletPage() {
           <button
             onClick={startPayment}
             disabled={busy}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl gradient-vortex py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground neon-glow disabled:opacity-60"
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl gradient-gold py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground glow-gold disabled:opacity-60"
           >
             {busy ? <Loader2 className="size-4 animate-spin" /> : <ShieldCheck className="size-4" />}
             Pay ₹{amount} via UPI
@@ -278,7 +278,7 @@ function WalletPage() {
           <button
             onClick={submitWithdraw}
             disabled={busy}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl gradient-vortex py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl gradient-gold py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
           >
             {busy && <Loader2 className="size-4 animate-spin" />} Request Payout
           </button>
@@ -394,7 +394,7 @@ function WalletPage() {
               <button
                 onClick={submitDeposit}
                 disabled={busy}
-                className="flex w-full items-center justify-center gap-2 rounded-xl gradient-vortex py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-2 rounded-xl gradient-gold py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
               >
                 {busy && <Loader2 className="size-4 animate-spin" />} I have paid — Submit
               </button>

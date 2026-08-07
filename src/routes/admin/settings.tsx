@@ -23,6 +23,12 @@ type S = {
   min_withdraw: number;
   payment_window_seconds: number;
   marquee: string;
+  maintenance_mode: boolean;
+  maintenance_message: string;
+  update_notice: string;
+  bonus_max_percent: number;
+  referral_reward: number;
+  referee_reward: number;
 };
 
 function AdminSettings() {
@@ -45,6 +51,12 @@ function AdminSettings() {
         min_withdraw: data.min_withdraw,
         payment_window_seconds: data.payment_window_seconds,
         marquee: data.marquee,
+        maintenance_mode: data.maintenance_mode,
+        maintenance_message: data.maintenance_message ?? "",
+        update_notice: data.update_notice ?? "",
+        bonus_max_percent: data.bonus_max_percent,
+        referral_reward: data.referral_reward,
+        referee_reward: data.referee_reward,
       });
     }
   }, [data, form]);
@@ -60,7 +72,13 @@ function AdminSettings() {
     setBusy(true);
     const { error } = await supabase
       .from("app_settings")
-      .update({ ...form, qr_url: form.qr_url.trim() || null })
+      .update({
+        ...form,
+        qr_url: form.qr_url.trim() || null,
+        maintenance_message: form.maintenance_message.trim(),
+        update_notice: form.update_notice.trim(),
+
+      })
       .eq("id", 1);
     setBusy(false);
     if (error) {
@@ -106,12 +124,47 @@ function AdminSettings() {
         <T label="App version" v={form.app_version} on={(v) => set("app_version", v)} />
         <T label="WhatsApp support link" v={form.support_url} on={(v) => set("support_url", v)} />
         <T label="Home ticker text" v={form.marquee} on={(v) => set("marquee", v)} />
+        <T label="Update notice banner" v={form.update_notice} on={(v) => set("update_notice", v)} />
+      </div>
+
+      <div className="space-y-2 rounded-2xl border border-border bg-card p-4">
+        <p className="font-display text-xs font-black uppercase tracking-widest text-accent">
+          Bonus &amp; Referral
+        </p>
+        <div className="grid grid-cols-3 gap-2">
+          <N
+            label="Bonus use %"
+            v={form.bonus_max_percent}
+            on={(v) => set("bonus_max_percent", v)}
+          />
+          <N label="Referrer coins" v={form.referral_reward} on={(v) => set("referral_reward", v)} />
+          <N label="New user coins" v={form.referee_reward} on={(v) => set("referee_reward", v)} />
+        </div>
+      </div>
+
+      <div className="space-y-2 rounded-2xl border border-border bg-card p-4">
+        <p className="font-display text-xs font-black uppercase tracking-widest text-accent">
+          Maintenance
+        </p>
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={form.maintenance_mode}
+            onChange={(e) => set("maintenance_mode", e.target.checked)}
+          />
+          Enable maintenance mode (players see a notice instead of the app)
+        </label>
+        <T
+          label="Maintenance message"
+          v={form.maintenance_message}
+          on={(v) => set("maintenance_message", v)}
+        />
       </div>
 
       <button
         onClick={save}
         disabled={busy}
-        className="flex w-full items-center justify-center gap-2 rounded-xl gradient-vortex py-3 font-display text-xs font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
+        className="flex w-full items-center justify-center gap-2 rounded-xl gradient-gold py-3 font-display text-xs font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
       >
         {busy ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />} Save settings
       </button>

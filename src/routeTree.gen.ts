@@ -15,6 +15,7 @@ import { Route as AppRouteImport } from './routes/app'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as DownloadRouteImport } from './routes/download'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminAnnouncementsRouteImport } from './routes/admin/announcements'
 import { Route as AdminPaymentsRouteImport } from './routes/admin/payments'
 import { Route as AdminPlayersRouteImport } from './routes/admin/players'
 import { Route as AdminResultsRouteImport } from './routes/admin/results'
@@ -22,6 +23,7 @@ import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as AdminTournamentsRouteImport } from './routes/admin/tournaments'
 import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AppHistoryRouteImport } from './routes/app/history'
+import { Route as AppNotificationsRouteImport } from './routes/app/notifications'
 import { Route as AppProfileRouteImport } from './routes/app/profile'
 import { Route as AppReferRouteImport } from './routes/app/refer'
 import { Route as AppWalletRouteImport } from './routes/app/wallet'
@@ -55,6 +57,11 @@ const DownloadRoute = DownloadRouteImport.update({
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnnouncementsRoute = AdminAnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminPaymentsRoute = AdminPaymentsRouteImport.update({
@@ -92,6 +99,11 @@ const AppHistoryRoute = AppHistoryRouteImport.update({
   path: '/history',
   getParentRoute: () => AppRoute,
 } as any)
+const AppNotificationsRoute = AppNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppProfileRoute = AppProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -119,12 +131,14 @@ export interface FileRoutesByFullPath {
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/download': typeof DownloadRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/payments': typeof AdminPaymentsRoute
   '/admin/players': typeof AdminPlayersRoute
   '/admin/results': typeof AdminResultsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/tournaments': typeof AdminTournamentsRoute
   '/app/history': typeof AppHistoryRoute
+  '/app/notifications': typeof AppNotificationsRoute
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
@@ -136,12 +150,14 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/download': typeof DownloadRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/payments': typeof AdminPaymentsRoute
   '/admin/players': typeof AdminPlayersRoute
   '/admin/results': typeof AdminResultsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/tournaments': typeof AdminTournamentsRoute
   '/app/history': typeof AppHistoryRoute
+  '/app/notifications': typeof AppNotificationsRoute
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
@@ -156,12 +172,14 @@ export interface FileRoutesById {
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/download': typeof DownloadRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/payments': typeof AdminPaymentsRoute
   '/admin/players': typeof AdminPlayersRoute
   '/admin/results': typeof AdminResultsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/tournaments': typeof AdminTournamentsRoute
   '/app/history': typeof AppHistoryRoute
+  '/app/notifications': typeof AppNotificationsRoute
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
@@ -177,12 +195,14 @@ export interface FileRouteTypes {
     | '/app'
     | '/auth'
     | '/download'
+    | '/admin/announcements'
     | '/admin/payments'
     | '/admin/players'
     | '/admin/results'
     | '/admin/settings'
     | '/admin/tournaments'
     | '/app/history'
+    | '/app/notifications'
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
@@ -194,12 +214,14 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/download'
+    | '/admin/announcements'
     | '/admin/payments'
     | '/admin/players'
     | '/admin/results'
     | '/admin/settings'
     | '/admin/tournaments'
     | '/app/history'
+    | '/app/notifications'
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
@@ -213,12 +235,14 @@ export interface FileRouteTypes {
     | '/app'
     | '/auth'
     | '/download'
+    | '/admin/announcements'
     | '/admin/payments'
     | '/admin/players'
     | '/admin/results'
     | '/admin/settings'
     | '/admin/tournaments'
     | '/app/history'
+    | '/app/notifications'
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
@@ -279,6 +303,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/announcements': {
+      id: '/admin/announcements'
+      path: '/announcements'
+      fullPath: '/admin/announcements'
+      preLoaderRoute: typeof AdminAnnouncementsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/payments': {
       id: '/admin/payments'
       path: '/payments'
@@ -328,6 +359,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppHistoryRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/notifications': {
+      id: '/app/notifications'
+      path: '/notifications'
+      fullPath: '/app/notifications'
+      preLoaderRoute: typeof AppNotificationsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/profile': {
       id: '/app/profile'
       path: '/profile'
@@ -360,6 +398,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminAnnouncementsRoute: typeof AdminAnnouncementsRoute
   AdminPaymentsRoute: typeof AdminPaymentsRoute
   AdminPlayersRoute: typeof AdminPlayersRoute
   AdminResultsRoute: typeof AdminResultsRoute
@@ -369,6 +408,7 @@ interface AdminRouteChildren {
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminAnnouncementsRoute: AdminAnnouncementsRoute,
   AdminPaymentsRoute: AdminPaymentsRoute,
   AdminPlayersRoute: AdminPlayersRoute,
   AdminResultsRoute: AdminResultsRoute,
@@ -381,6 +421,7 @@ const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface AppRouteChildren {
   AppHistoryRoute: typeof AppHistoryRoute
+  AppNotificationsRoute: typeof AppNotificationsRoute
   AppProfileRoute: typeof AppProfileRoute
   AppReferRoute: typeof AppReferRoute
   AppWalletRoute: typeof AppWalletRoute
@@ -390,6 +431,7 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppHistoryRoute: AppHistoryRoute,
+  AppNotificationsRoute: AppNotificationsRoute,
   AppProfileRoute: AppProfileRoute,
   AppReferRoute: AppReferRoute,
   AppWalletRoute: AppWalletRoute,

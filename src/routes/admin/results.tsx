@@ -122,7 +122,7 @@ function EntryRow({
       <button
         onClick={save}
         disabled={busy}
-        className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl gradient-vortex py-2.5 text-[11px] font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
+        className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl gradient-gold py-2.5 text-[11px] font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
       >
         {busy ? <Loader2 className="size-4 animate-spin" /> : <Trophy className="size-4" />} Save result
       </button>

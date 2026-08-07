@@ -14,54 +14,129 @@ export type Database = {
   }
   public: {
     Tables: {
+      announcements: {
+        Row: {
+          active: boolean
+          body: string
+          created_at: string
+          id: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          body?: string
+          created_at?: string
+          id?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          body?: string
+          created_at?: string
+          id?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       app_settings: {
         Row: {
           apk_url: string
           app_version: string
+          bonus_max_percent: number
           coin_rate: number
           created_at: string
           id: number
+          maintenance_message: string
+          maintenance_mode: boolean
           marquee: string
           min_deposit: number
           min_withdraw: number
           payee_name: string
           payment_window_seconds: number
           qr_url: string | null
+          referee_reward: number
+          referral_reward: number
           support_url: string
+          update_notice: string
           updated_at: string
           upi_id: string
         }
         Insert: {
           apk_url?: string
           app_version?: string
+          bonus_max_percent?: number
           coin_rate?: number
           created_at?: string
           id?: number
+          maintenance_message?: string
+          maintenance_mode?: boolean
           marquee?: string
           min_deposit?: number
           min_withdraw?: number
           payee_name?: string
           payment_window_seconds?: number
           qr_url?: string | null
+          referee_reward?: number
+          referral_reward?: number
           support_url?: string
+          update_notice?: string
           updated_at?: string
           upi_id?: string
         }
         Update: {
           apk_url?: string
           app_version?: string
+          bonus_max_percent?: number
           coin_rate?: number
           created_at?: string
           id?: number
+          maintenance_message?: string
+          maintenance_mode?: boolean
           marquee?: string
           min_deposit?: number
           min_withdraw?: number
           payee_name?: string
           payment_window_seconds?: number
           qr_url?: string | null
+          referee_reward?: number
+          referral_reward?: number
           support_url?: string
+          update_notice?: string
           updated_at?: string
           upi_id?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          kind: string
+          link: string | null
+          title: string
+          user_id: string | null
+        }
+        Insert: {
+          body?: string
+          created_at?: string
+          id?: string
+          kind?: string
+          link?: string | null
+          title: string
+          user_id?: string | null
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          kind?: string
+          link?: string | null
+          title?: string
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -179,8 +254,10 @@ export type Database = {
           mode: Database["public"]["Enums"]["tournament_mode"]
           per_kill: number
           prize_pool: number
+          published: boolean
           room_id: string | null
           room_password: string | null
+          room_reveal_minutes: number
           rules: string | null
           status: Database["public"]["Enums"]["tournament_status"]
           title: string
@@ -200,8 +277,10 @@ export type Database = {
           mode?: Database["public"]["Enums"]["tournament_mode"]
           per_kill?: number
           prize_pool?: number
+          published?: boolean
           room_id?: string | null
           room_password?: string | null
+          room_reveal_minutes?: number
           rules?: string | null
           status?: Database["public"]["Enums"]["tournament_status"]
           title: string
@@ -221,8 +300,10 @@ export type Database = {
           mode?: Database["public"]["Enums"]["tournament_mode"]
           per_kill?: number
           prize_pool?: number
+          published?: boolean
           room_id?: string | null
           room_password?: string | null
+          room_reveal_minutes?: number
           rules?: string | null
           status?: Database["public"]["Enums"]["tournament_status"]
           title?: string

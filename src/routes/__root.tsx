@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AuthProvider } from "../lib/auth";
 import { Toaster } from "../components/ui/sonner";
+import { registerServiceWorker } from "../lib/pwa";
+import { supabase } from "../integrations/supabase/client";
 
 function NotFoundComponent() {
   return (
@@ -79,19 +81,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "VortexGo — Daily Skill-Based Gaming Tournaments & Rewards" },
+      { title: "YUVIX — Daily Skill-Based Gaming Tournaments & Rewards" },
       {
         name: "description",
         content:
-          "Join VortexGo: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
+          "Join YUVIX: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
       },
-      { name: "author", content: "VortexGo" },
+      { name: "author", content: "YUVIX" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "VortexGo — Daily Skill-Based Gaming Tournaments & Rewards" },
-      { name: "twitter:title", content: "VortexGo — Daily Skill-Based Gaming Tournaments & Rewards" },
-      { property: "og:description", content: "Join VortexGo: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning." },
-      { name: "twitter:description", content: "Join VortexGo: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning." },
+      { property: "og:title", content: "YUVIX — Daily Skill-Based Gaming Tournaments & Rewards" },
+      { name: "twitter:title", content: "YUVIX — Daily Skill-Based Gaming Tournaments & Rewards" },
+      { property: "og:description", content: "Join YUVIX: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning." },
+      { name: "twitter:description", content: "Join YUVIX: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ab7efb8d-27f1-477c-a0e3-6a95d934d927/id-preview-17b7e5b6--8dfe9c5d-6b9a-4e5a-bedc-eaf243b51f48.lovable.app-1785916336258.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ab7efb8d-27f1-477c-a0e3-6a95d934d927/id-preview-17b7e5b6--8dfe9c5d-6b9a-4e5a-bedc-eaf243b51f48.lovable.app-1785916336258.png" },
     ],
@@ -101,6 +103,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/icon-192.png" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "preconnect",
@@ -109,10 +113,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
       },
     ],
-
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -136,6 +139,20 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    registerServiceWorker();
+  }, []);
+
+  useEffect(() => {
+    const { data: sub } = supabase.auth.onAuthStateChange((event) => {
+      if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+      router.invalidate();
+      if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
+    });
+    return () => sub.subscription.unsubscribe();
+  }, [router, queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -147,3 +164,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+

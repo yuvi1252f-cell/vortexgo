@@ -152,7 +152,7 @@ function TournamentPage() {
 
           <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-secondary">
             <div
-              className={`h-full rounded-full ${full ? "bg-destructive" : "gradient-vortex"}`}
+              className={`h-full rounded-full ${full ? "bg-destructive" : "gradient-gold"}`}
               style={{
                 width: `${Math.min(100, (tournament.filled_slots / tournament.total_slots) * 100)}%`,
               }}
@@ -176,7 +176,8 @@ function TournamentPage() {
             </div>
           ) : (
             <p className="mt-2 text-sm text-muted-foreground">
-              You are registered. Room ID and password appear here shortly before the match starts.
+              Room details will be available {tournament.room_reveal_minutes ?? 10} minutes before
+              match start.
             </p>
           )}
         </div>
@@ -203,7 +204,7 @@ function TournamentPage() {
             <ShieldAlert className="size-4" /> Match rules
           </p>
           <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
-            {tournament.rules ?? "Standard VortexGo fair-play rules apply."}
+            {tournament.rules ?? "Standard YUVIX fair-play rules apply."}
           </p>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             <li>• Screen recording must be ON from the moment ID &amp; password are shared.</li>
@@ -235,7 +236,7 @@ function TournamentPage() {
       )}
 
       {!joined && tournament.status === "upcoming" && (
-        <div className="sticky bottom-20 rounded-2xl border border-primary/30 bg-card p-4 neon-glow">
+        <div className="sticky bottom-20 rounded-2xl border border-primary/30 bg-card p-4 glow-gold">
           <input
             value={ffName}
             onChange={(e) => setFfName(e.target.value)}
@@ -251,7 +252,7 @@ function TournamentPage() {
             type="button"
             onClick={join}
             disabled={joining || full || balance < tournament.entry_fee}
-            className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl gradient-vortex py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground disabled:opacity-50"
+            className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl gradient-gold py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground disabled:opacity-50"
           >
             {joining && <Loader2 className="size-4 animate-spin" />}
             {full ? "Match is full" : balance < tournament.entry_fee ? "Low balance" : "Join Now"}

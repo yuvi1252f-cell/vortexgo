@@ -80,7 +80,7 @@ function AdminPayments() {
             key={s}
             onClick={() => setStatus(s)}
             className={`rounded-lg py-2 font-display text-[11px] font-bold uppercase tracking-widest ${
-              status === s ? "gradient-vortex text-primary-foreground" : "text-muted-foreground"
+              status === s ? "gradient-gold text-primary-foreground" : "text-muted-foreground"
             }`}
           >
             {s}
@@ -135,7 +135,7 @@ function AdminPayments() {
                   <button
                     onClick={() => review(r.id, true)}
                     disabled={busy === r.id}
-                    className="flex items-center gap-1 rounded-lg gradient-vortex px-4 py-2 text-[11px] font-black uppercase tracking-wide text-primary-foreground disabled:opacity-60"
+                    className="flex items-center gap-1 rounded-lg gradient-gold px-4 py-2 text-[11px] font-black uppercase tracking-wide text-primary-foreground disabled:opacity-60"
                   >
                     {busy === r.id ? <Loader2 className="size-3.5 animate-spin" /> : <Check className="size-3.5" />}
                     Approve
