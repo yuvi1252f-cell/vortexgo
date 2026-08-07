@@ -111,7 +111,7 @@ function AdminSettings() {
       <button
         onClick={save}
         disabled={busy}
-        className="flex w-full items-center justify-center gap-2 rounded-xl gradient-vortex py-3 font-display text-xs font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
+        className="flex w-full items-center justify-center gap-2 rounded-xl gradient-gold py-3 font-display text-xs font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
       >
         {busy ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />} Save settings
       </button>

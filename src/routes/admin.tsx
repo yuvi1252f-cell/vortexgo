@@ -2,23 +2,23 @@ import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-rout
 import { useEffect } from "react";
 import { BarChart3, IndianRupee, Settings2, Swords, Trophy, Users } from "lucide-react";
 
-import logo from "@/assets/vortexgo-logo.png";
+import logo from "@/assets/yuvix-logo.png";
 import { useAuth } from "@/lib/auth";
 import { useIsAdmin } from "@/lib/queries";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "VortexGo Admin — Tournament & Payment Control Panel" },
+      { title: "YUVIX Admin — Tournament & Payment Control Panel" },
       {
         name: "description",
         content:
-          "Admin control panel for VortexGo: create tournaments, set prizes and entry fees, approve UPI payments and withdrawals, and publish match results.",
+          "Admin control panel for YUVIX: create tournaments, set prizes and entry fees, approve UPI payments and withdrawals, and publish match results.",
       },
-      { property: "og:title", content: "VortexGo Admin Control Panel" },
+      { property: "og:title", content: "YUVIX Admin Control Panel" },
       {
         property: "og:description",
-        content: "Manage tournaments, payments, players and results for VortexGo.",
+        content: "Manage tournaments, payments, players and results for YUVIX.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -63,11 +63,11 @@ function AdminLayout() {
           Admins only
         </h1>
         <p className="text-sm text-muted-foreground">
-          This account does not have admin access to VortexGo.
+          This account does not have admin access to YUVIX.
         </p>
         <Link
           to="/app"
-          className="rounded-xl gradient-vortex px-5 py-2.5 font-display text-xs font-black uppercase tracking-widest text-primary-foreground"
+          className="rounded-xl gradient-gold px-5 py-2.5 font-display text-xs font-black uppercase tracking-widest text-primary-foreground"
         >
           Back to app
         </Link>
@@ -79,8 +79,8 @@ function AdminLayout() {
     <div className="min-h-screen bg-background pb-24 text-foreground">
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-2.5">
-          <img src={logo} alt="VortexGo" width={48} height={48} className="h-8 w-8 object-contain" />
-          <span className="font-display text-sm font-black tracking-widest text-gradient-vortex">
+          <img src={logo} alt="YUVIX" width={48} height={48} className="h-8 w-8 object-contain" />
+          <span className="font-display text-sm font-black tracking-widest text-gradient-gold">
             ADMIN PANEL
           </span>
           <Link

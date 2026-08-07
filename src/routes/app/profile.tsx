@@ -61,7 +61,7 @@ function ProfilePage() {
 
       <div className="rounded-2xl border border-border bg-card p-4">
         <div className="flex items-center gap-3">
-          <div className="flex size-14 items-center justify-center rounded-full gradient-vortex">
+          <div className="flex size-14 items-center justify-center rounded-full gradient-gold">
             <UserRound className="size-7 text-primary-foreground" />
           </div>
           <div className="min-w-0">
@@ -80,7 +80,7 @@ function ProfilePage() {
           type="button"
           onClick={save}
           disabled={busy}
-          className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl gradient-vortex py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
+          className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl gradient-gold py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
         >
           <Save className="size-4" /> Save Changes
         </button>

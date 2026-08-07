@@ -65,7 +65,7 @@ function HomePage() {
 
   return (
     <div className="space-y-5">
-      <section className="relative overflow-hidden rounded-2xl border border-primary/30 bg-card p-4 neon-glow">
+      <section className="relative overflow-hidden rounded-2xl border border-primary/30 bg-card p-4 glow-gold">
         <div className="absolute -right-12 -top-12 size-40 rounded-full bg-primary/25 blur-[70px]" />
         <div className="relative flex items-center justify-between">
           <div>
@@ -81,7 +81,7 @@ function HomePage() {
           <div className="flex flex-col gap-2">
             <Link
               to="/app/wallet"
-              className="rounded-xl gradient-vortex px-4 py-2 font-display text-xs font-black uppercase tracking-widest text-primary-foreground"
+              className="rounded-xl gradient-gold px-4 py-2 font-display text-xs font-black uppercase tracking-widest text-primary-foreground"
             >
               Add Money
             </Link>
@@ -108,7 +108,7 @@ function HomePage() {
             onClick={() => setCategory(key)}
             className={`flex shrink-0 items-center gap-1.5 rounded-full border px-3.5 py-2 font-display text-[11px] font-bold uppercase tracking-widest transition-colors ${
               category === key
-                ? "border-transparent gradient-vortex text-primary-foreground"
+                ? "border-transparent gradient-gold text-primary-foreground"
                 : "border-border bg-card text-muted-foreground"
             }`}
           >
@@ -156,7 +156,7 @@ function HomePage() {
               key={t.id}
               to="/app/tournament/$id"
               params={{ id: t.id }}
-              className="block overflow-hidden rounded-2xl border border-border bg-card transition-transform hover:-translate-y-0.5 hover:neon-border"
+              className="block overflow-hidden rounded-2xl border border-border bg-card transition-transform hover:-translate-y-0.5 hover:premium-border"
             >
               <div className="relative">
                 <img
@@ -197,7 +197,7 @@ function HomePage() {
 
                 <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-secondary">
                   <div
-                    className={`h-full rounded-full ${full ? "bg-destructive" : "gradient-vortex"}`}
+                    className={`h-full rounded-full ${full ? "bg-destructive" : "gradient-gold"}`}
                     style={{ width: `${pct}%` }}
                   />
                 </div>

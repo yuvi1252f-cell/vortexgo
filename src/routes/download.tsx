@@ -2,22 +2,22 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { CheckCircle2, Download, Share, Smartphone } from "lucide-react";
 
-import logo from "@/assets/vortexgo-logo.png";
+import logo from "@/assets/yuvix-logo.png";
 import { useSettings } from "@/lib/queries";
 
 export const Route = createFileRoute("/download")({
   head: () => ({
     meta: [
-      { title: "Download VortexGo App — Free Fire Tournaments on Your Phone" },
+      { title: "Download YUVIX App — Free Fire Tournaments on Your Phone" },
       {
         name: "description",
         content:
-          "Install the VortexGo app on your phone in one tap. Join daily Free Fire tournaments, track your wallet and withdraw winnings to UPI.",
+          "Install the YUVIX app on your phone in one tap. Join daily Free Fire tournaments, track your wallet and withdraw winnings to UPI.",
       },
-      { property: "og:title", content: "Download the VortexGo App" },
+      { property: "og:title", content: "Download the YUVIX App" },
       {
         property: "og:description",
-        content: "Install VortexGo and start winning real cash in daily Free Fire tournaments.",
+        content: "Install YUVIX and start winning real cash in daily Free Fire tournaments.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -65,13 +65,13 @@ function DownloadPage() {
       <div className="relative w-full max-w-sm text-center">
         <img
           src={logo}
-          alt="VortexGo app icon"
+          alt="YUVIX app icon"
           width={816}
           height={816}
           className="mx-auto h-28 w-28 animate-float object-contain drop-shadow-[0_0_40px_oklch(0.62_0.25_300/0.6)]"
         />
-        <h1 className="mt-4 font-display text-2xl font-black uppercase tracking-widest text-gradient-vortex">
-          Install VortexGo
+        <h1 className="mt-4 font-display text-2xl font-black uppercase tracking-widest text-gradient-gold">
+          Install YUVIX
         </h1>
         <p className="mt-1 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
           Version {settings?.app_version ?? "1.0.0"} · Free
@@ -89,14 +89,14 @@ function DownloadPage() {
               </p>
               <p>1. Tap the Share button in Safari.</p>
               <p>2. Choose “Add to Home Screen”.</p>
-              <p>3. Open VortexGo from your home screen.</p>
+              <p>3. Open YUVIX from your home screen.</p>
             </div>
           ) : (
             <>
               <button
                 onClick={install}
                 disabled={!deferred}
-                className="flex w-full items-center justify-center gap-2 rounded-xl gradient-vortex py-3.5 font-display text-sm font-black uppercase tracking-widest text-primary-foreground neon-glow disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-2 rounded-xl gradient-gold py-3.5 font-display text-sm font-black uppercase tracking-widest text-primary-foreground glow-gold disabled:opacity-60"
               >
                 <Download className="size-4" /> Install App
               </button>
@@ -107,7 +107,7 @@ function DownloadPage() {
                 </p>
               )}
               <a
-                href={settings?.apk_url ?? "/vortexgo.apk"}
+                href={settings?.apk_url ?? "/yuvix.apk"}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-secondary py-3 font-display text-[11px] font-bold uppercase tracking-widest text-foreground"
               >
                 <Smartphone className="size-4" /> Download APK

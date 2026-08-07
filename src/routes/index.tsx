@@ -20,29 +20,29 @@ import {
   Zap,
 } from "lucide-react";
 
-import logo from "@/assets/vortexgo-logo.png";
-import heroBg from "@/assets/vortex-hero.jpg";
+import logo from "@/assets/yuvix-logo.png";
+import heroBg from "@/assets/hero-yuvix.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "VortexGo — Daily Skill-Based Gaming Tournaments & Rewards" },
+      { title: "YUVIX — Daily Skill-Based Gaming Tournaments & Rewards" },
       {
         name: "description",
         content:
-          "Join VortexGo: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
+          "Join YUVIX: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
       },
-      { property: "og:title", content: "VortexGo — Daily Skill-Based Gaming Tournaments & Rewards" },
+      { property: "og:title", content: "YUVIX — Daily Skill-Based Gaming Tournaments & Rewards" },
       {
         property: "og:description",
         content:
-          "Join VortexGo: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
+          "Join YUVIX: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: VortexGoLanding,
+  component: YUVIXLanding,
 });
 
 const WHATSAPP =
@@ -95,7 +95,7 @@ const STEPS = [
     icon: Smartphone,
     step: "01",
     title: "Download the App",
-    body: "Grab the VortexGo APK and install in under a minute.",
+    body: "Grab the YUVIX APK and install in under a minute.",
   },
   {
     icon: Users,
@@ -133,7 +133,7 @@ const TICKER = [
   "24/7 SUPPORT",
 ];
 
-function VortexGoLanding() {
+function YUVIXLanding() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -158,13 +158,13 @@ function VortexGoLanding() {
           <a href="#home" className="flex min-w-0 items-center gap-2">
             <img
               src={logo}
-              alt="VortexGo logo"
+              alt="YUVIX logo"
               width={48}
               height={48}
               className="h-11 w-11 shrink-0 object-contain drop-shadow-[0_0_14px_oklch(0.62_0.25_300/0.7)]"
             />
-            <span className="truncate font-display text-lg font-black tracking-widest text-gradient-vortex">
-              VORTEXGO
+            <span className="truncate font-display text-lg font-black tracking-widest text-gradient-gold">
+              YUVIX
             </span>
           </a>
 
@@ -183,7 +183,7 @@ function VortexGoLanding() {
           <div className="flex shrink-0 items-center gap-2">
             <a
               href="#download"
-              className="hidden rounded-full gradient-vortex px-5 py-2 font-display text-xs font-bold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105 sm:inline-block"
+              className="hidden rounded-full gradient-gold px-5 py-2 font-display text-xs font-bold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105 sm:inline-block"
             >
               Get App
             </a>
@@ -236,7 +236,7 @@ function VortexGoLanding() {
           <div className="relative mx-auto max-w-6xl px-4 text-center sm:px-6">
             <img
               src={logo}
-              alt="VortexGo esports logo"
+              alt="YUVIX esports logo"
               width={816}
               height={816}
               className="mx-auto h-40 w-40 animate-float object-contain drop-shadow-[0_0_45px_oklch(0.62_0.25_300/0.65)] sm:h-56 sm:w-56"
@@ -248,13 +248,13 @@ function VortexGoLanding() {
             </div>
 
             <h1 className="mt-5 font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
-              Enter The <span className="text-gradient-vortex">Vortex</span>
+              Enter The <span className="text-gradient-gold">Vortex</span>
             </h1>
             <p className="mt-3 font-display text-sm font-bold uppercase tracking-[0.3em] text-accent sm:text-base">
               Play · Compete · Conquer
             </p>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground text-balance sm:text-lg">
-              VortexGo is your competitive gaming destination. Join daily
+              YUVIX is your competitive gaming destination. Join daily
               skill-based tournaments, earn real rewards instantly, and rise up
               a leaderboard built purely on skill.
             </p>
@@ -262,7 +262,7 @@ function VortexGoLanding() {
             <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
               <a
                 href="#download"
-                className="group inline-flex items-center justify-center gap-2 rounded-2xl gradient-vortex px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-primary-foreground neon-glow transition-transform hover:scale-[1.03]"
+                className="group inline-flex items-center justify-center gap-2 rounded-2xl gradient-gold px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-primary-foreground glow-gold transition-transform hover:scale-[1.03]"
               >
                 <Smartphone className="size-5" />
                 Download App
@@ -271,7 +271,7 @@ function VortexGoLanding() {
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-accent/40 bg-card/70 px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-accent backdrop-blur transition-transform hover:scale-[1.03] cyan-glow"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-accent/40 bg-card/70 px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-accent backdrop-blur transition-transform hover:scale-[1.03] glow-soft"
               >
                 <MessageCircle className="size-5" />
                 WhatsApp Support
@@ -299,7 +299,7 @@ function VortexGoLanding() {
         <section id="features" className="relative py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <SectionHeading
-              kicker="Why VortexGo"
+              kicker="Why YUVIX"
               title="Built For Real Gamers"
               sub="Trusted by real players, engineered for fair play."
             />
@@ -307,10 +307,10 @@ function VortexGoLanding() {
               {FEATURES.map(({ icon: Icon, title, body }) => (
                 <article
                   key={title}
-                  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:neon-border"
+                  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:premium-border"
                 >
                   <div className="absolute -right-10 -top-10 size-28 rounded-full bg-primary/20 blur-2xl opacity-0 transition-opacity group-hover:opacity-100" />
-                  <div className="relative flex size-12 items-center justify-center rounded-xl gradient-vortex">
+                  <div className="relative flex size-12 items-center justify-center rounded-xl gradient-gold">
                     <Icon className="size-6 text-primary-foreground" />
                   </div>
                   <h3 className="relative mt-5 font-display text-lg font-bold uppercase tracking-wide">
@@ -414,7 +414,7 @@ function VortexGoLanding() {
               ].map(({ icon: Icon, title, body }) => (
                 <article
                   key={title}
-                  className="rounded-2xl border border-border bg-gradient-to-b from-card to-background p-7 transition-all hover:neon-border"
+                  className="rounded-2xl border border-border bg-gradient-to-b from-card to-background p-7 transition-all hover:premium-border"
                 >
                   <Icon className="size-8 text-primary" />
                   <h3 className="mt-4 font-display text-lg font-bold uppercase tracking-wide">
@@ -429,21 +429,21 @@ function VortexGoLanding() {
 
         {/* DOWNLOAD CTA */}
         <section id="download" className="px-4 pb-20 sm:px-6">
-          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-primary/30 bg-card/70 px-6 py-14 text-center backdrop-blur neon-glow sm:px-12">
+          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-primary/30 bg-card/70 px-6 py-14 text-center backdrop-blur glow-gold sm:px-12">
             <div className="absolute inset-0 hex-grid opacity-60" />
             <div className="absolute -left-16 -top-16 size-56 rounded-full bg-primary/25 blur-[90px]" />
             <div className="absolute -bottom-16 -right-16 size-56 rounded-full bg-accent/20 blur-[90px]" />
             <div className="relative">
               <img
                 src={logo}
-                alt="VortexGo app icon"
+                alt="YUVIX app icon"
                 loading="lazy"
                 width={816}
                 height={816}
                 className="mx-auto h-24 w-24 animate-float object-contain"
               />
               <h2 className="mt-6 font-display text-3xl font-black uppercase tracking-tight sm:text-4xl">
-                Get The <span className="text-gradient-vortex">VortexGo</span>{" "}
+                Get The <span className="text-gradient-gold">YUVIX</span>{" "}
                 App
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">
@@ -453,10 +453,10 @@ function VortexGoLanding() {
               <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
                 <a
                   href="/download"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl gradient-vortex px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-primary-foreground transition-transform hover:scale-[1.03]"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl gradient-gold px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-primary-foreground transition-transform hover:scale-[1.03]"
                 >
                   <Smartphone className="size-5" />
-                  Download VortexGo App
+                  Download YUVIX App
                 </a>
 
                 <a
@@ -482,7 +482,7 @@ function VortexGoLanding() {
         <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
           <img
             src={logo}
-            alt="VortexGo"
+            alt="YUVIX"
             loading="lazy"
             width={816}
             height={816}
@@ -501,7 +501,7 @@ function VortexGoLanding() {
           </nav>
           <p className="mt-5 text-sm text-muted-foreground">
             © {new Date().getFullYear()}{" "}
-            <span className="font-semibold text-foreground">VortexGo</span>. All
+            <span className="font-semibold text-foreground">YUVIX</span>. All
             rights reserved.
           </p>
         </div>
@@ -510,7 +510,7 @@ function VortexGoLanding() {
       <a
         href="#home"
         aria-label="Back to top"
-        className="fixed bottom-5 right-5 z-40 flex size-12 items-center justify-center rounded-xl gradient-vortex text-primary-foreground neon-glow transition-transform hover:scale-110"
+        className="fixed bottom-5 right-5 z-40 flex size-12 items-center justify-center rounded-xl gradient-gold text-primary-foreground glow-gold transition-transform hover:scale-110"
       >
         <ArrowUp className="size-5" />
       </a>
@@ -535,7 +535,7 @@ function SectionHeading({
       <h2 className="mt-3 font-display text-3xl font-black uppercase tracking-tight text-balance sm:text-4xl">
         {title}
       </h2>
-      <div className="mx-auto mt-4 h-1 w-20 rounded-full gradient-vortex" />
+      <div className="mx-auto mt-4 h-1 w-20 rounded-full gradient-gold" />
       <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground text-balance">
         {sub}
       </p>

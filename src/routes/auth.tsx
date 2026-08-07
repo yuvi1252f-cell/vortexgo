@@ -4,8 +4,8 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { Loader2, Lock, Mail, Phone, User } from "lucide-react";
 
-import logo from "@/assets/vortexgo-logo.png";
-import heroBg from "@/assets/vortex-hero.jpg";
+import logo from "@/assets/yuvix-logo.png";
+import heroBg from "@/assets/hero-yuvix.jpg";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { useAuth } from "@/lib/auth";
@@ -13,16 +13,16 @@ import { useAuth } from "@/lib/auth";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Login or Sign Up — VortexGo Tournaments" },
+      { title: "Login or Sign Up — YUVIX Tournaments" },
       {
         name: "description",
         content:
-          "Create your VortexGo account or log in to join daily Free Fire tournaments, manage your wallet and withdraw winnings to UPI.",
+          "Create your YUVIX account or log in to join daily Free Fire tournaments, manage your wallet and withdraw winnings to UPI.",
       },
-      { property: "og:title", content: "Login or Sign Up — VortexGo Tournaments" },
+      { property: "og:title", content: "Login or Sign Up — YUVIX Tournaments" },
       {
         property: "og:description",
-        content: "Create your VortexGo account and start competing in daily cash tournaments.",
+        content: "Create your YUVIX account and start competing in daily cash tournaments.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -151,13 +151,13 @@ function AuthPage() {
         <div className="text-center">
           <img
             src={logo}
-            alt="VortexGo"
+            alt="YUVIX"
             width={816}
             height={816}
             className="mx-auto h-24 w-24 animate-float object-contain drop-shadow-[0_0_35px_oklch(0.62_0.25_300/0.6)]"
           />
-          <h1 className="mt-3 font-display text-2xl font-black uppercase tracking-widest text-gradient-vortex">
-            VortexGo
+          <h1 className="mt-3 font-display text-2xl font-black uppercase tracking-widest text-gradient-gold">
+            YUVIX
           </h1>
           <p className="mt-1 text-xs font-semibold uppercase tracking-[0.3em] text-accent">
             Enter the arena
@@ -173,7 +173,7 @@ function AuthPage() {
                 onClick={() => setTab(t)}
                 className={`rounded-lg py-2 font-display text-xs font-bold uppercase tracking-widest transition-colors ${
                   tab === t
-                    ? "gradient-vortex text-primary-foreground"
+                    ? "gradient-gold text-primary-foreground"
                     : "text-muted-foreground"
                 }`}
               >
@@ -253,7 +253,7 @@ function AuthPage() {
             <button
               type="submit"
               disabled={busy}
-              className="flex w-full items-center justify-center gap-2 rounded-xl gradient-vortex py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground neon-glow disabled:opacity-60"
+              className="flex w-full items-center justify-center gap-2 rounded-xl gradient-gold py-3 font-display text-sm font-black uppercase tracking-widest text-primary-foreground glow-gold disabled:opacity-60"
             >
               {busy && <Loader2 className="size-4 animate-spin" />}
               {tab === "login" ? "Login" : tab === "signup" ? "Create Account" : "Send Reset Link"}

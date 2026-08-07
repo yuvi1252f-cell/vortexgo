@@ -130,7 +130,7 @@ function AdminTournaments() {
         <h1 className="font-display text-lg font-black uppercase tracking-widest">Matches</h1>
         <button
           onClick={() => setForm({ ...EMPTY, match_time: localInput() })}
-          className="flex items-center gap-1 rounded-xl gradient-vortex px-3 py-2 text-[11px] font-black uppercase tracking-wide text-primary-foreground"
+          className="flex items-center gap-1 rounded-xl gradient-gold px-3 py-2 text-[11px] font-black uppercase tracking-wide text-primary-foreground"
         >
           <Plus className="size-3.5" /> New
         </button>
@@ -212,7 +212,7 @@ function AdminTournaments() {
             <button
               onClick={save}
               disabled={busy}
-              className="flex flex-1 items-center justify-center gap-2 rounded-xl gradient-vortex py-2.5 font-display text-xs font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl gradient-gold py-2.5 font-display text-xs font-black uppercase tracking-widest text-primary-foreground disabled:opacity-60"
             >
               {busy && <Loader2 className="size-4 animate-spin" />} Save
             </button>

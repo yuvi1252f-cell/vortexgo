@@ -2,7 +2,7 @@ import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-rout
 import { useEffect, useState } from "react";
 import { Bell, Coins, MessageCircle } from "lucide-react";
 
-import logo from "@/assets/vortexgo-logo.png";
+import logo from "@/assets/yuvix-logo.png";
 import { BottomNav, Splash } from "@/components/app/AppChrome";
 import { useAuth } from "@/lib/auth";
 import { useProfile } from "@/lib/queries";
@@ -11,17 +11,17 @@ import { WHATSAPP_SUPPORT } from "@/lib/constants";
 export const Route = createFileRoute("/app")({
   head: () => ({
     meta: [
-      { title: "VortexGo App — Join Free Fire Tournaments & Win Real Cash" },
+      { title: "YUVIX App — Join Free Fire Tournaments & Win Real Cash" },
       {
         name: "description",
         content:
-          "Play daily Survival, Full Map, Clash Squad and Lone Wolf tournaments on VortexGo. Track your wallet, withdraw to UPI and climb the leaderboard.",
+          "Play daily Survival, Full Map, Clash Squad and Lone Wolf tournaments on YUVIX. Track your wallet, withdraw to UPI and climb the leaderboard.",
       },
-      { property: "og:title", content: "VortexGo App — Join Tournaments & Win Real Cash" },
+      { property: "og:title", content: "YUVIX App — Join Tournaments & Win Real Cash" },
       {
         property: "og:description",
         content:
-          "Daily skill-based tournaments, instant UPI withdrawals and 24/7 support inside the VortexGo app.",
+          "Daily skill-based tournaments, instant UPI withdrawals and 24/7 support inside the YUVIX app.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -55,9 +55,9 @@ function AppLayout() {
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-lg items-center gap-3 px-4 py-2.5">
           <Link to="/app" className="flex items-center gap-2">
-            <img src={logo} alt="VortexGo" width={48} height={48} className="h-8 w-8 object-contain" />
-            <span className="font-display text-sm font-black tracking-widest text-gradient-vortex">
-              VORTEXGO
+            <img src={logo} alt="YUVIX" width={48} height={48} className="h-8 w-8 object-contain" />
+            <span className="font-display text-sm font-black tracking-widest text-gradient-gold">
+              YUVIX
             </span>
           </Link>
           <div className="ml-auto flex items-center gap-2">
