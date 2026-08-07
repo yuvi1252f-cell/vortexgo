@@ -176,7 +176,8 @@ function TournamentPage() {
             </div>
           ) : (
             <p className="mt-2 text-sm text-muted-foreground">
-              You are registered. Room ID and password appear here shortly before the match starts.
+              Room details will be available {tournament.room_reveal_minutes ?? 10} minutes before
+              match start.
             </p>
           )}
         </div>
