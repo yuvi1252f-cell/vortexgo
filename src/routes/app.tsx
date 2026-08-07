@@ -5,7 +5,7 @@ import { Bell, Coins, MessageCircle } from "lucide-react";
 import logo from "@/assets/yuvix-logo.png";
 import { BottomNav, Splash } from "@/components/app/AppChrome";
 import { useAuth } from "@/lib/auth";
-import { useProfile } from "@/lib/queries";
+import { useProfile, useRealtimeSync, useSettings } from "@/lib/queries";
 import { WHATSAPP_SUPPORT } from "@/lib/constants";
 
 export const Route = createFileRoute("/app")({
@@ -35,6 +35,8 @@ function AppLayout() {
   const navigate = useNavigate();
   const [splash, setSplash] = useState(true);
   const { data: profile } = useProfile();
+  const { data: settings } = useSettings();
+  useRealtimeSync();
 
   useEffect(() => {
     const t = setTimeout(() => setSplash(false), 1700);
@@ -46,6 +48,29 @@ function AppLayout() {
   }, [loading, user, navigate]);
 
   if (splash || loading || !user) return <Splash />;
+
+  if (settings?.maintenance_mode) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-background px-6 text-center">
+        <img src={logo} alt="YUVIX" width={816} height={816} className="h-24 w-24 object-contain" />
+        <h1 className="font-display text-xl font-black uppercase tracking-widest text-gradient-gold">
+          Under maintenance
+        </h1>
+        <p className="max-w-sm text-sm text-muted-foreground">
+          {settings.maintenance_message ||
+            "YUVIX is being upgraded. Matches will be back shortly — thanks for your patience."}
+        </p>
+        <a
+          href={WHATSAPP_SUPPORT}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-xl gradient-gold px-5 py-2.5 font-display text-xs font-black uppercase tracking-widest text-primary-foreground"
+        >
+          Contact support
+        </a>
+      </div>
+    );
+  }
 
   const coins =
     (profile?.deposit_coins ?? 0) + (profile?.winning_coins ?? 0) + (profile?.bonus_coins ?? 0);
@@ -78,7 +103,7 @@ function AppLayout() {
               <MessageCircle className="size-4" />
             </a>
             <Link
-              to="/app/history"
+              to="/app/notifications"
               aria-label="Notifications"
               className="flex size-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground"
             >
@@ -87,6 +112,14 @@ function AppLayout() {
           </div>
         </div>
       </header>
+
+      {settings?.update_notice ? (
+        <div className="mx-auto max-w-lg px-4 pt-3">
+          <p className="rounded-xl border border-accent/40 bg-card px-3 py-2 text-center text-[11px] font-semibold uppercase tracking-wider text-accent">
+            {settings.update_notice}
+          </p>
+        </div>
+      ) : null}
 
       <main className="mx-auto max-w-lg px-4 py-4">
         <Outlet />
