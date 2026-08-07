@@ -23,7 +23,6 @@ export default defineConfig({
         devOptions: { enabled: false },
         workbox: {
           globPatterns: ["**/*.{js,css,png,svg,webmanifest,woff2}"],
-          navigateFallback: undefined,
           cleanupOutdatedCaches: true,
           clientsClaim: true,
           skipWaiting: true,
