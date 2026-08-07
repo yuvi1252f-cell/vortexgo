@@ -56,7 +56,7 @@ const NAV = [
   { label: "How It Works", href: "#how" },
   { label: "Stats", href: "#stats" },
   { label: "Rewards", href: "#rewards" },
-  { label: "Download", href: "#download" },
+  { label: "Get App", href: "#download" },
 ];
 
 const FEATURES = [
@@ -184,7 +184,7 @@ function YUVIXLanding() {
 
           <div className="flex shrink-0 items-center gap-2">
             <a
-              href="#download"
+              href="#home"
               className="hidden rounded-full gradient-gold px-5 py-2 font-display text-xs font-bold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105 sm:inline-block"
             >
               Get App
