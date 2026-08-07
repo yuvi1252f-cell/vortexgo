@@ -22,6 +22,8 @@ import {
 
 import logo from "@/assets/yuvix-logo.png";
 import heroBg from "@/assets/hero-yuvix.jpg";
+import { InstallButton } from "@/components/InstallButton";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -248,8 +250,9 @@ function YUVIXLanding() {
             </div>
 
             <h1 className="mt-5 font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
-              Enter The <span className="text-gradient-gold">Vortex</span>
+              Enter The <span className="text-gradient-gold">Arena</span>
             </h1>
+
             <p className="mt-3 font-display text-sm font-bold uppercase tracking-[0.3em] text-accent sm:text-base">
               Play · Compete · Conquer
             </p>
@@ -260,13 +263,7 @@ function YUVIXLanding() {
             </p>
 
             <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
-              <a
-                href="#download"
-                className="group inline-flex items-center justify-center gap-2 rounded-2xl gradient-gold px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-primary-foreground glow-gold transition-transform hover:scale-[1.03]"
-              >
-                <Smartphone className="size-5" />
-                Download App
-              </a>
+              <InstallButton className="glow-gold" />
               <a
                 href={WHATSAPP}
                 target="_blank"
@@ -277,6 +274,7 @@ function YUVIXLanding() {
                 WhatsApp Support
               </a>
             </div>
+
           </div>
         </section>
 
@@ -452,14 +450,6 @@ function YUVIXLanding() {
               </p>
               <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
                 <a
-                  href="/download"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl gradient-gold px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-primary-foreground transition-transform hover:scale-[1.03]"
-                >
-                  <Smartphone className="size-5" />
-                  Download YUVIX App
-                </a>
-
-                <a
                   href={WHATSAPP}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -469,6 +459,7 @@ function YUVIXLanding() {
                   Join WhatsApp Support
                 </a>
               </div>
+
               <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
                 18+ · Skill-based gaming · Play responsibly
               </p>
