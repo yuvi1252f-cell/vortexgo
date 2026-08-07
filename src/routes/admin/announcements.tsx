@@ -58,14 +58,20 @@ function AdminAnnouncements() {
 
   async function toggle(id: string, active: boolean) {
     const { error } = await supabase.from("announcements").update({ active }).eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     qc.invalidateQueries({ queryKey: ["admin-announcements"] });
     qc.invalidateQueries({ queryKey: ["announcements"] });
   }
 
   async function remove(id: string) {
     const { error } = await supabase.from("announcements").delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Deleted");
     qc.invalidateQueries({ queryKey: ["admin-announcements"] });
     qc.invalidateQueries({ queryKey: ["announcements"] });
