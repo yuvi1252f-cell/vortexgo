@@ -445,7 +445,7 @@ function YUVIXLanding() {
                 App
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">
-                Tap below to download the Android app and start competing in
+                Install YUVIX from the button at the top and start competing in
                 today's tournaments. Support is one message away.
               </p>
               <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
