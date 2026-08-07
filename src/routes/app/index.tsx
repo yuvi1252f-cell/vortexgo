@@ -7,12 +7,13 @@ import {
   Flame,
   Gift,
   Map as MapIcon,
+  Megaphone,
   Sparkles,
   Trophy,
   Users,
 } from "lucide-react";
 
-import { useProfile, useTournaments } from "@/lib/queries";
+import { useAnnouncements, useProfile, useRecentWinners, useTournaments } from "@/lib/queries";
 import {
   CATEGORY_LABEL,
   MODE_LABEL,
@@ -43,6 +44,8 @@ const STATUS_TABS = [
 function HomePage() {
   const { data: profile } = useProfile();
   const { data: tournaments, isLoading } = useTournaments();
+  const { data: announcements } = useAnnouncements();
+  const { data: winners } = useRecentWinners();
   const [category, setCategory] = useState<Category | "all">("all");
   const [status, setStatus] = useState<(typeof STATUS_TABS)[number]["key"]>("upcoming");
   const [now, setNow] = useState(() => Date.now());
@@ -55,7 +58,10 @@ function HomePage() {
   const list = useMemo(
     () =>
       (tournaments ?? []).filter(
-        (t) => t.status === status && (category === "all" || t.category === category),
+        (t) =>
+          t.published !== false &&
+          t.status === status &&
+          (category === "all" || t.category === category),
       ),
     [tournaments, status, category],
   );
@@ -99,6 +105,15 @@ function HomePage() {
           <MiniStat label="Bonus" value={profile?.bonus_coins ?? 0} />
         </div>
       </section>
+
+      {(announcements ?? []).slice(0, 2).map((a) => (
+        <div key={a.id} className="rounded-2xl border border-accent/40 bg-card p-4">
+          <p className="flex items-center gap-2 font-display text-xs font-black uppercase tracking-widest text-accent">
+            <Megaphone className="size-4" /> {a.title}
+          </p>
+          <p className="mt-1.5 text-sm text-muted-foreground">{a.body}</p>
+        </div>
+      ))}
 
       <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1">
         {CATEGORIES.map(({ key, label, icon: Icon }) => (
@@ -214,6 +229,22 @@ function HomePage() {
           );
         })}
       </div>
+
+      {(winners ?? []).length > 0 && (
+        <div className="rounded-2xl border border-border bg-card p-4">
+          <p className="font-display text-xs font-black uppercase tracking-widest text-accent">
+            Recent winners
+          </p>
+          <ul className="mt-3 space-y-2">
+            {(winners ?? []).slice(0, 6).map((w) => (
+              <li key={w.id} className="flex items-center justify-between text-sm">
+                <span className="truncate pr-2 font-semibold">{w.ff_name}</span>
+                <span className="shrink-0 text-accent">+{w.prize}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4">
         <Trophy className="size-8 shrink-0 text-accent" />

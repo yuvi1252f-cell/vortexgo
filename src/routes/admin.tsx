@@ -1,6 +1,6 @@
 import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { BarChart3, IndianRupee, Settings2, Swords, Trophy, Users } from "lucide-react";
+import { BarChart3, IndianRupee, Megaphone, Settings2, Swords, Trophy, Users } from "lucide-react";
 
 import logo from "@/assets/yuvix-logo.png";
 import { useAuth } from "@/lib/auth";
@@ -34,6 +34,7 @@ const TABS = [
   { to: "/admin/payments", label: "Payments", icon: IndianRupee, exact: false },
   { to: "/admin/results", label: "Results", icon: Trophy, exact: false },
   { to: "/admin/players", label: "Players", icon: Users, exact: false },
+  { to: "/admin/announcements", label: "News", icon: Megaphone, exact: false },
   { to: "/admin/settings", label: "Setup", icon: Settings2, exact: false },
 ] as const;
 
@@ -97,7 +98,7 @@ function AdminLayout() {
       </main>
 
       <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 backdrop-blur-xl">
-        <div className="mx-auto grid max-w-3xl grid-cols-6">
+        <div className="mx-auto grid max-w-3xl grid-cols-7">
           {TABS.map((t) => (
             <Link
               key={t.to}
