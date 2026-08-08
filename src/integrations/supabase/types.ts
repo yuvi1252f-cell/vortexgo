@@ -383,7 +383,33 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      public_app_settings: {
+        Row: {
+          apk_url: string | null
+          app_version: string | null
+          id: number | null
+          maintenance_message: string | null
+          maintenance_mode: boolean | null
+          update_notice: string | null
+        }
+        Insert: {
+          apk_url?: string | null
+          app_version?: string | null
+          id?: number | null
+          maintenance_message?: string | null
+          maintenance_mode?: boolean | null
+          update_notice?: string | null
+        }
+        Update: {
+          apk_url?: string | null
+          app_version?: string | null
+          id?: number | null
+          maintenance_message?: string | null
+          maintenance_mode?: boolean | null
+          update_notice?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       admin_adjust_wallet: {
