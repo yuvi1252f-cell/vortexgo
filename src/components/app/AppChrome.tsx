@@ -14,10 +14,10 @@ export function Splash() {
         height={816}
         className="relative h-36 w-36 animate-float object-contain"
       />
-      <p className="relative mt-6 font-display text-2xl font-black tracking-[0.3em] text-gradient-gold">
+      <p className="relative mt-6 px-6 text-center font-display text-xl font-black tracking-[0.18em] text-gradient-gold sm:text-2xl">
         BARMUDA CLASH
       </p>
-      <p className="relative mt-2 text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+      <p className="relative mt-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground sm:text-xs">
         Play · Compete · Conquer
       </p>
       <div className="relative mt-8 h-1 w-40 overflow-hidden rounded-full bg-secondary">
