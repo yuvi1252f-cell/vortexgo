@@ -79,9 +79,9 @@ function AppLayout() {
     <div className="min-h-screen bg-background pb-20 text-foreground">
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-lg items-center gap-3 px-4 py-2.5">
-          <Link to="/app" className="flex items-center gap-2">
-            <img src={logo} alt="BARMUDA CLASH" width={48} height={48} className="h-8 w-8 object-contain" />
-            <span className="font-display text-sm font-black tracking-widest text-gradient-gold">
+          <Link to="/app" className="flex min-w-0 items-center gap-2">
+            <img src={logo} alt="BARMUDA CLASH" width={48} height={48} className="h-8 w-8 shrink-0 object-contain" />
+            <span className="truncate whitespace-nowrap font-display text-[11px] font-black tracking-[0.14em] text-gradient-gold sm:text-sm">
               BARMUDA CLASH
             </span>
           </Link>
