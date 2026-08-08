@@ -154,7 +154,7 @@ function AuthPage() {
             alt="BARMUDA CLASH"
             width={816}
             height={816}
-            className="mx-auto h-24 w-24 animate-float object-contain drop-shadow-[0_0_35px_oklch(0.62_0.25_300/0.6)]"
+            className="mx-auto h-24 w-24 animate-float object-contain"
           />
           <h1 className="mt-3 font-display text-2xl font-black uppercase tracking-widest text-gradient-gold">
             BARMUDA CLASH

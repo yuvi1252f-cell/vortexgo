@@ -68,7 +68,7 @@ function DownloadPage() {
           alt="BARMUDA CLASH app icon"
           width={816}
           height={816}
-          className="mx-auto h-28 w-28 animate-float object-contain drop-shadow-[0_0_40px_oklch(0.62_0.25_300/0.6)]"
+          className="mx-auto h-28 w-28 animate-float object-contain"
         />
         <h1 className="mt-4 font-display text-2xl font-black uppercase tracking-widest text-gradient-gold">
           Install BARMUDA CLASH

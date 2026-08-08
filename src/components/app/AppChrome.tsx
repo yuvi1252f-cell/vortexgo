@@ -12,7 +12,7 @@ export function Splash() {
         alt="BARMUDA CLASH"
         width={816}
         height={816}
-        className="relative h-36 w-36 animate-float object-contain drop-shadow-[0_0_45px_oklch(0.62_0.25_300/0.65)]"
+        className="relative h-36 w-36 animate-float object-contain"
       />
       <p className="relative mt-6 font-display text-2xl font-black tracking-[0.3em] text-gradient-gold">
         BARMUDA CLASH
@@ -51,7 +51,7 @@ export function BottomNav() {
                 active ? "text-accent" : "text-muted-foreground"
               }`}
             >
-              <Icon className={`size-5 ${active ? "drop-shadow-[0_0_8px_currentColor]" : ""}`} />
+              <Icon className={`size-5 ${active ? "" : ""}`} />
               {label}
             </Link>
           );

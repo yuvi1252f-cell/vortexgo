@@ -163,7 +163,7 @@ function BarmudaLanding() {
               alt="BARMUDA CLASH logo"
               width={48}
               height={48}
-              className="h-11 w-11 shrink-0 object-contain drop-shadow-[0_0_14px_oklch(0.62_0.25_300/0.7)]"
+              className="h-11 w-11 shrink-0 object-contain"
             />
             <span className="truncate font-display text-lg font-black tracking-widest text-gradient-gold">
               BARMUDA CLASH
@@ -241,7 +241,7 @@ function BarmudaLanding() {
               alt="BARMUDA CLASH esports logo"
               width={816}
               height={816}
-              className="mx-auto h-40 w-40 animate-float object-contain drop-shadow-[0_0_45px_oklch(0.62_0.25_300/0.65)] sm:h-56 sm:w-56"
+              className="mx-auto h-40 w-40 animate-float object-contain sm:h-56 sm:w-56"
             />
 
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent backdrop-blur">
