@@ -40,8 +40,8 @@ function AdminSettings() {
   useEffect(() => {
     if (data && !form) {
       setForm({
-        upi_id: data.upi_id,
-        payee_name: data.payee_name,
+        upi_id: data.upi_id ?? "",
+        payee_name: data.payee_name ?? "",
         qr_url: data.qr_url ?? "",
         apk_url: data.apk_url,
         app_version: data.app_version,
