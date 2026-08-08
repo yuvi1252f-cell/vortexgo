@@ -20,6 +20,15 @@ export function useProfile() {
   });
 }
 
+import type { Database } from "@/integrations/supabase/types";
+
+/** Payment fields are only readable by signed-in users, so they are optional. */
+type AppSettings = Omit<
+  Database["public"]["Tables"]["app_settings"]["Row"],
+  "upi_id" | "payee_name" | "qr_url"
+> &
+  Partial<Pick<Database["public"]["Tables"]["app_settings"]["Row"], "upi_id" | "payee_name" | "qr_url">>;
+
 const PUBLIC_SETTING_COLUMNS =
   "id, app_version, apk_url, maintenance_mode, maintenance_message, update_notice";
 
