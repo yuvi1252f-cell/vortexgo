@@ -20,18 +20,37 @@ export function useProfile() {
   });
 }
 
+const PUBLIC_SETTING_COLUMNS =
+  "id, app_version, apk_url, maintenance_mode, maintenance_message, update_notice";
+
 export function useSettings() {
+  const { user } = useAuth();
   return useQuery({
-    queryKey: ["settings"],
+    queryKey: ["settings", user ? "full" : "public"],
     staleTime: 30_000,
     queryFn: async () => {
+      // Payment details (UPI id / payee) are only readable by signed-in users.
       const { data, error } = await supabase
         .from("app_settings")
-        .select("*")
+        .select(user ? "*" : PUBLIC_SETTING_COLUMNS)
         .eq("id", 1)
         .maybeSingle();
       if (error) throw error;
-      return data;
+      return data as Record<string, never> extends never
+        ? never
+        : (data as unknown as {
+            id: number;
+            app_version: string;
+            apk_url: string | null;
+            maintenance_mode: boolean;
+            maintenance_message: string | null;
+            update_notice: string | null;
+            upi_id?: string;
+            payee_name?: string;
+            qr_url?: string | null;
+            bonus_max_percent?: number;
+            ticker_text?: string | null;
+          } | null);
     },
   });
 }
