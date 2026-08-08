@@ -6,8 +6,8 @@
 
 /*
  * Design system — "BARMUDA CLASH"
- * Premium esports theme: onyx black surfaces, pure white type, champagne gold
- * accents and glassmorphism cards. All colors use oklch semantic tokens.
+ * Premium light esports theme: white surfaces, near-black type, one strong
+ * electric-blue accent, subtle borders and soft shadows.
  */
 
 @theme inline {
@@ -62,62 +62,62 @@
 }
 
 :root {
-  --radius: 1.125rem;
+  --radius: 0.875rem;
 
-  /* Onyx base */
-  --background: oklch(0.11 0.004 260);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.16 0.005 260);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.15 0.005 260);
-  --popover-foreground: oklch(0.98 0 0);
+  /* Light base */
+  --background: oklch(0.985 0.002 260);
+  --foreground: oklch(0.2 0.01 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.01 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.01 260);
 
-  /* Champagne gold primary, white accent */
-  --primary: oklch(0.82 0.14 88);
-  --primary-foreground: oklch(0.16 0.02 80);
-  --primary-glow: oklch(0.92 0.1 95);
-  --secondary: oklch(0.22 0.005 260);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.2 0.005 260);
-  --muted-foreground: oklch(0.72 0.005 260);
-  --accent: oklch(0.86 0.13 90);
-  --accent-foreground: oklch(0.16 0.02 80);
-  --destructive: oklch(0.62 0.2 25);
+  /* Electric blue accent */
+  --primary: oklch(0.56 0.21 262);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-glow: oklch(0.68 0.17 258);
+  --secondary: oklch(0.96 0.005 260);
+  --secondary-foreground: oklch(0.24 0.01 260);
+  --muted: oklch(0.96 0.005 260);
+  --muted-foreground: oklch(0.5 0.012 260);
+  --accent: oklch(0.56 0.21 262);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.58 0.21 26);
   --destructive-foreground: oklch(0.99 0 0);
-  --success: oklch(0.72 0.16 155);
-  --success-foreground: oklch(0.14 0.02 155);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.82 0.14 88);
+  --success: oklch(0.6 0.15 152);
+  --success-foreground: oklch(0.99 0 0);
+  --border: oklch(0.2 0.01 260 / 10%);
+  --input: oklch(0.2 0.01 260 / 14%);
+  --ring: oklch(0.56 0.21 262);
 
-  --chart-1: oklch(0.82 0.14 88);
-  --chart-2: oklch(0.98 0 0);
-  --chart-3: oklch(0.72 0.16 155);
-  --chart-4: oklch(0.62 0.2 25);
-  --chart-5: oklch(0.6 0.02 260);
+  --chart-1: oklch(0.56 0.21 262);
+  --chart-2: oklch(0.2 0.01 260);
+  --chart-3: oklch(0.6 0.15 152);
+  --chart-4: oklch(0.58 0.21 26);
+  --chart-5: oklch(0.7 0.02 260);
 
   --gradient-gold: linear-gradient(
     135deg,
-    oklch(0.74 0.13 78) 0%,
-    oklch(0.9 0.12 92) 48%,
-    oklch(0.78 0.14 84) 100%
+    oklch(0.52 0.22 264) 0%,
+    oklch(0.6 0.2 258) 55%,
+    oklch(0.66 0.17 252) 100%
   );
   --gradient-onyx: linear-gradient(
     160deg,
-    oklch(0.2 0.006 260) 0%,
-    oklch(0.12 0.004 260) 100%
+    oklch(1 0 0) 0%,
+    oklch(0.96 0.006 260) 100%
   );
-  --shadow-gold: 0 18px 60px -22px oklch(0.82 0.14 88 / 55%);
-  --shadow-soft: 0 20px 60px -30px oklch(0 0 0 / 90%);
+  --shadow-gold: 0 14px 34px -16px oklch(0.56 0.21 262 / 45%);
+  --shadow-soft: 0 12px 32px -18px oklch(0.2 0.03 260 / 30%);
 
-  --sidebar: oklch(0.14 0.005 260);
-  --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.82 0.14 88);
-  --sidebar-primary-foreground: oklch(0.16 0.02 80);
-  --sidebar-accent: oklch(0.22 0.005 260);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.82 0.14 88);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.2 0.01 260);
+  --sidebar-primary: oklch(0.56 0.21 262);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.96 0.005 260);
+  --sidebar-accent-foreground: oklch(0.24 0.01 260);
+  --sidebar-border: oklch(0.2 0.01 260 / 10%);
+  --sidebar-ring: oklch(0.56 0.21 262);
 }
 
 @theme inline {
