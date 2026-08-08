@@ -2,23 +2,23 @@ import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-rout
 import { useEffect } from "react";
 import { BarChart3, IndianRupee, Megaphone, Settings2, Swords, Trophy, Users } from "lucide-react";
 
-import logo from "@/assets/yuvix-logo.png";
+import logo from "@/assets/barmuda-logo.png";
 import { useAuth } from "@/lib/auth";
 import { useIsAdmin } from "@/lib/queries";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "YUVIX Admin — Tournament & Payment Control Panel" },
+      { title: "BARMUDA CLASH Admin — Tournament & Payment Control Panel" },
       {
         name: "description",
         content:
-          "Admin control panel for YUVIX: create tournaments, set prizes and entry fees, approve UPI payments and withdrawals, and publish match results.",
+          "Admin control panel for BARMUDA CLASH: create tournaments, set prizes and entry fees, approve UPI payments and withdrawals, and publish match results.",
       },
-      { property: "og:title", content: "YUVIX Admin Control Panel" },
+      { property: "og:title", content: "BARMUDA CLASH Admin Control Panel" },
       {
         property: "og:description",
-        content: "Manage tournaments, payments, players and results for YUVIX.",
+        content: "Manage tournaments, payments, players and results for BARMUDA CLASH.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -64,7 +64,7 @@ function AdminLayout() {
           Admins only
         </h1>
         <p className="text-sm text-muted-foreground">
-          This account does not have admin access to YUVIX.
+          This account does not have admin access to BARMUDA CLASH.
         </p>
         <Link
           to="/app"
@@ -80,7 +80,7 @@ function AdminLayout() {
     <div className="min-h-screen bg-background pb-24 text-foreground">
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-2.5">
-          <img src={logo} alt="YUVIX" width={48} height={48} className="h-8 w-8 object-contain" />
+          <img src={logo} alt="BARMUDA CLASH" width={48} height={48} className="h-8 w-8 object-contain" />
           <span className="font-display text-sm font-black tracking-widest text-gradient-gold">
             ADMIN PANEL
           </span>

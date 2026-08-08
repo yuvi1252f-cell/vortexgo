@@ -204,7 +204,7 @@ function TournamentPage() {
             <ShieldAlert className="size-4" /> Match rules
           </p>
           <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
-            {tournament.rules ?? "Standard YUVIX fair-play rules apply."}
+            {tournament.rules ?? "Standard BARMUDA CLASH fair-play rules apply."}
           </p>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             <li>• Screen recording must be ON from the moment ID &amp; password are shared.</li>

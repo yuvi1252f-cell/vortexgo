@@ -212,7 +212,7 @@ export function useRealtimeSync() {
   const qc = useQueryClient();
 
   useEffect(() => {
-    const channel = supabase.channel("yuvix-realtime");
+    const channel = supabase.channel("barmuda-realtime");
     for (const [table, keys] of Object.entries(REALTIME_MAP)) {
       channel.on("postgres_changes", { event: "*", schema: "public", table }, () => {
         for (const key of keys) qc.invalidateQueries({ queryKey: [key] });

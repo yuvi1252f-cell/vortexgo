@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Coins, History, Home, Users, Wallet } from "lucide-react";
-import logo from "@/assets/yuvix-logo.png";
+import logo from "@/assets/barmuda-logo.png";
 
 export function Splash() {
   return (
@@ -9,13 +9,13 @@ export function Splash() {
       <div className="absolute size-[320px] rounded-full bg-primary/25 blur-[120px] animate-pulse-glow" />
       <img
         src={logo}
-        alt="YUVIX"
+        alt="BARMUDA CLASH"
         width={816}
         height={816}
         className="relative h-36 w-36 animate-float object-contain drop-shadow-[0_0_45px_oklch(0.62_0.25_300/0.65)]"
       />
       <p className="relative mt-6 font-display text-2xl font-black tracking-[0.3em] text-gradient-gold">
-        YUVIX
+        BARMUDA CLASH
       </p>
       <p className="relative mt-2 text-xs font-semibold uppercase tracking-[0.35em] text-accent">
         Play · Compete · Conquer

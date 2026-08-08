@@ -85,7 +85,7 @@ function WalletPage() {
     }
     setBusy(true);
     try {
-      const uri = upiUri(settings.upi_id, settings.payee_name || "YUVIX", amount, `YUVIX ${amount}`);
+      const uri = upiUri(settings.upi_id, settings.payee_name || "BARMUDA CLASH", amount, `BARMUDA CLASH ${amount}`);
       const qr = settings.qr_url ? settings.qr_url : await upiQrDataUrl(uri);
       setSession({ amount, uri, qr });
       setLeft(windowSec);

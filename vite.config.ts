@@ -32,7 +32,7 @@ export default defineConfig({
                 request.mode === "navigate" && !url.pathname.startsWith("/~oauth"),
               handler: "NetworkFirst",
               options: {
-                cacheName: "yuvix-pages",
+                cacheName: "barmuda-pages",
                 networkTimeoutSeconds: 4,
                 expiration: { maxEntries: 40, maxAgeSeconds: 60 * 60 * 24 * 7 },
               },
@@ -42,7 +42,7 @@ export default defineConfig({
                 sameOrigin && ["style", "script", "image", "font"].includes(request.destination),
               handler: "CacheFirst",
               options: {
-                cacheName: "yuvix-assets",
+                cacheName: "barmuda-assets",
                 expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 30 },
               },
             },

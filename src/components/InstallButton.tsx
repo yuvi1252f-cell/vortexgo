@@ -16,7 +16,7 @@ function standalone() {
 }
 
 /**
- * Single install entry point for YUVIX.
+ * Single install entry point for BARMUDA CLASH.
  * Shows "Install App" when the browser offers installation, "Open App" once
  * installed, and falls back to the guided /download page otherwise.
  */
@@ -51,7 +51,7 @@ export function InstallButton({ className = "" }: { className?: string }) {
     return (
       <a href="/app" className={`${base} ${className}`}>
         <CheckCircle2 className="size-5" />
-        Open YUVIX App
+        Open BARMUDA CLASH App
       </a>
     );
   }
@@ -77,7 +77,7 @@ export function InstallButton({ className = "" }: { className?: string }) {
   return (
     <a href="/download" className={`${base} ${className}`}>
       <Smartphone className="size-5" />
-      Install YUVIX App
+      Install BARMUDA CLASH App
     </a>
   );
 }
