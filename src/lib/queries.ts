@@ -36,21 +36,7 @@ export function useSettings() {
         .eq("id", 1)
         .maybeSingle();
       if (error) throw error;
-      return data as Record<string, never> extends never
-        ? never
-        : (data as unknown as {
-            id: number;
-            app_version: string;
-            apk_url: string | null;
-            maintenance_mode: boolean;
-            maintenance_message: string | null;
-            update_notice: string | null;
-            upi_id?: string;
-            payee_name?: string;
-            qr_url?: string | null;
-            bonus_max_percent?: number;
-            ticker_text?: string | null;
-          } | null);
+      return data as unknown as AppSettings | null;
     },
   });
 }
