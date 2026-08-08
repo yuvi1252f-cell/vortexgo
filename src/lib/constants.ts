@@ -3,7 +3,7 @@ export const WHATSAPP_SUPPORT =
 
 // Merchant UPI details shown on the Add Money screen (admin-editable in Setup).
 export const UPI_ID = "gurjaryuvi735-1@okicici";
-export const UPI_PAYEE_NAME = "YUVIX";
+export const UPI_PAYEE_NAME = "BARMUDA CLASH";
 
-export const BRAND = "YUVIX";
+export const BRAND = "BARMUDA CLASH";
 export const BRAND_TAGLINE = "Play · Compete · Conquer";

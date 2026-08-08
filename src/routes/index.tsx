@@ -20,31 +20,31 @@ import {
   Zap,
 } from "lucide-react";
 
-import logo from "@/assets/yuvix-logo.png";
-import heroBg from "@/assets/hero-yuvix.jpg";
+import logo from "@/assets/barmuda-logo.png";
+import heroBg from "@/assets/hero-barmuda.jpg";
 import { InstallButton } from "@/components/InstallButton";
 
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "YUVIX — Daily Skill-Based Gaming Tournaments & Rewards" },
+      { title: "BARMUDA CLASH — Daily Skill-Based Gaming Tournaments & Rewards" },
       {
         name: "description",
         content:
-          "Join YUVIX: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
+          "Join BARMUDA CLASH: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
       },
-      { property: "og:title", content: "YUVIX — Daily Skill-Based Gaming Tournaments & Rewards" },
+      { property: "og:title", content: "BARMUDA CLASH — Daily Skill-Based Gaming Tournaments & Rewards" },
       {
         property: "og:description",
         content:
-          "Join YUVIX: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
+          "Join BARMUDA CLASH: daily free-entry esports tournaments, instant UPI withdrawals, fair-play matches and 24/7 support. Download the app and start winning.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: YUVIXLanding,
+  component: BarmudaLanding,
 });
 
 const WHATSAPP =
@@ -97,7 +97,7 @@ const STEPS = [
     icon: Smartphone,
     step: "01",
     title: "Download the App",
-    body: "Grab the YUVIX APK and install in under a minute.",
+    body: "Grab the BARMUDA CLASH APK and install in under a minute.",
   },
   {
     icon: Users,
@@ -135,7 +135,7 @@ const TICKER = [
   "24/7 SUPPORT",
 ];
 
-function YUVIXLanding() {
+function BarmudaLanding() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -160,13 +160,13 @@ function YUVIXLanding() {
           <a href="#home" className="flex min-w-0 items-center gap-2">
             <img
               src={logo}
-              alt="YUVIX logo"
+              alt="BARMUDA CLASH logo"
               width={48}
               height={48}
-              className="h-11 w-11 shrink-0 object-contain drop-shadow-[0_0_14px_oklch(0.62_0.25_300/0.7)]"
+              className="h-11 w-11 shrink-0 object-contain"
             />
             <span className="truncate font-display text-lg font-black tracking-widest text-gradient-gold">
-              YUVIX
+              BARMUDA CLASH
             </span>
           </a>
 
@@ -238,10 +238,10 @@ function YUVIXLanding() {
           <div className="relative mx-auto max-w-6xl px-4 text-center sm:px-6">
             <img
               src={logo}
-              alt="YUVIX esports logo"
+              alt="BARMUDA CLASH esports logo"
               width={816}
               height={816}
-              className="mx-auto h-40 w-40 animate-float object-contain drop-shadow-[0_0_45px_oklch(0.62_0.25_300/0.65)] sm:h-56 sm:w-56"
+              className="mx-auto h-40 w-40 animate-float object-contain sm:h-56 sm:w-56"
             />
 
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent backdrop-blur">
@@ -257,7 +257,7 @@ function YUVIXLanding() {
               Play · Compete · Conquer
             </p>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground text-balance sm:text-lg">
-              YUVIX is your competitive gaming destination. Join daily
+              BARMUDA CLASH is your competitive gaming destination. Join daily
               skill-based tournaments, earn real rewards instantly, and rise up
               a leaderboard built purely on skill.
             </p>
@@ -297,7 +297,7 @@ function YUVIXLanding() {
         <section id="features" className="relative py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <SectionHeading
-              kicker="Why YUVIX"
+              kicker="Why BARMUDA CLASH"
               title="Built For Real Gamers"
               sub="Trusted by real players, engineered for fair play."
             />
@@ -434,18 +434,18 @@ function YUVIXLanding() {
             <div className="relative">
               <img
                 src={logo}
-                alt="YUVIX app icon"
+                alt="BARMUDA CLASH app icon"
                 loading="lazy"
                 width={816}
                 height={816}
                 className="mx-auto h-24 w-24 animate-float object-contain"
               />
               <h2 className="mt-6 font-display text-3xl font-black uppercase tracking-tight sm:text-4xl">
-                Get The <span className="text-gradient-gold">YUVIX</span>{" "}
+                Get The <span className="text-gradient-gold">BARMUDA CLASH</span>{" "}
                 App
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">
-                Install YUVIX from the button at the top and start competing in
+                Install BARMUDA CLASH from the button at the top and start competing in
                 today's tournaments. Support is one message away.
               </p>
               <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
@@ -473,7 +473,7 @@ function YUVIXLanding() {
         <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
           <img
             src={logo}
-            alt="YUVIX"
+            alt="BARMUDA CLASH"
             loading="lazy"
             width={816}
             height={816}
@@ -492,7 +492,7 @@ function YUVIXLanding() {
           </nav>
           <p className="mt-5 text-sm text-muted-foreground">
             © {new Date().getFullYear()}{" "}
-            <span className="font-semibold text-foreground">YUVIX</span>. All
+            <span className="font-semibold text-foreground">BARMUDA CLASH</span>. All
             rights reserved.
           </p>
         </div>

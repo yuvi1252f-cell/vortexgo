@@ -20,18 +20,32 @@ export function useProfile() {
   });
 }
 
+import type { Database } from "@/integrations/supabase/types";
+
+/** Payment fields are only readable by signed-in users, so they are optional. */
+type AppSettings = Omit<
+  Database["public"]["Tables"]["app_settings"]["Row"],
+  "upi_id" | "payee_name" | "qr_url"
+> &
+  Partial<Pick<Database["public"]["Tables"]["app_settings"]["Row"], "upi_id" | "payee_name" | "qr_url">>;
+
+const PUBLIC_SETTING_COLUMNS =
+  "id, app_version, apk_url, maintenance_mode, maintenance_message, update_notice";
+
 export function useSettings() {
+  const { user } = useAuth();
   return useQuery({
-    queryKey: ["settings"],
+    queryKey: ["settings", user ? "full" : "public"],
     staleTime: 30_000,
     queryFn: async () => {
+      // Payment details (UPI id / payee) are only readable by signed-in users.
       const { data, error } = await supabase
         .from("app_settings")
-        .select("*")
+        .select(user ? "*" : PUBLIC_SETTING_COLUMNS)
         .eq("id", 1)
         .maybeSingle();
       if (error) throw error;
-      return data;
+      return data as unknown as AppSettings | null;
     },
   });
 }
@@ -212,7 +226,7 @@ export function useRealtimeSync() {
   const qc = useQueryClient();
 
   useEffect(() => {
-    const channel = supabase.channel("yuvix-realtime");
+    const channel = supabase.channel("barmuda-realtime");
     for (const [table, keys] of Object.entries(REALTIME_MAP)) {
       channel.on("postgres_changes", { event: "*", schema: "public", table }, () => {
         for (const key of keys) qc.invalidateQueries({ queryKey: [key] });

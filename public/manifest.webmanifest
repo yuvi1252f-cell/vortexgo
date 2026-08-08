@@ -1,6 +1,6 @@
 {
-  "name": "YUVIX — Esports Tournaments",
-  "short_name": "YUVIX",
+  "name": "BARMUDA CLASH — Esports Tournaments",
+  "short_name": "BARMUDA CLASH",
   "description": "Premium esports platform for daily Free Fire style tournaments with real cash prizes and instant UPI payouts.",
   "id": "/app",
   "start_url": "/app",
@@ -8,8 +8,8 @@
   "display": "standalone",
   "display_override": ["standalone", "fullscreen"],
   "orientation": "portrait",
-  "background_color": "#0a0a0b",
-  "theme_color": "#0a0a0b",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "categories": ["games", "sports", "entertainment"],
   "icons": [
     { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },

@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Coins, History, Home, Users, Wallet } from "lucide-react";
-import logo from "@/assets/yuvix-logo.png";
+import logo from "@/assets/barmuda-logo.png";
 
 export function Splash() {
   return (
@@ -9,15 +9,15 @@ export function Splash() {
       <div className="absolute size-[320px] rounded-full bg-primary/25 blur-[120px] animate-pulse-glow" />
       <img
         src={logo}
-        alt="YUVIX"
+        alt="BARMUDA CLASH"
         width={816}
         height={816}
-        className="relative h-36 w-36 animate-float object-contain drop-shadow-[0_0_45px_oklch(0.62_0.25_300/0.65)]"
+        className="relative h-36 w-36 animate-float object-contain"
       />
-      <p className="relative mt-6 font-display text-2xl font-black tracking-[0.3em] text-gradient-gold">
-        YUVIX
+      <p className="relative mt-6 px-6 text-center font-display text-xl font-black tracking-[0.18em] text-gradient-gold sm:text-2xl">
+        BARMUDA CLASH
       </p>
-      <p className="relative mt-2 text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+      <p className="relative mt-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground sm:text-xs">
         Play · Compete · Conquer
       </p>
       <div className="relative mt-8 h-1 w-40 overflow-hidden rounded-full bg-secondary">
@@ -51,7 +51,7 @@ export function BottomNav() {
                 active ? "text-accent" : "text-muted-foreground"
               }`}
             >
-              <Icon className={`size-5 ${active ? "drop-shadow-[0_0_8px_currentColor]" : ""}`} />
+              <Icon className={`size-5 ${active ? "" : ""}`} />
               {label}
             </Link>
           );

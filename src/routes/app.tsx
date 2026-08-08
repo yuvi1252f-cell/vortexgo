@@ -2,7 +2,7 @@ import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-rout
 import { useEffect, useState } from "react";
 import { Bell, Coins, MessageCircle } from "lucide-react";
 
-import logo from "@/assets/yuvix-logo.png";
+import logo from "@/assets/barmuda-logo.png";
 import { BottomNav, Splash } from "@/components/app/AppChrome";
 import { useAuth } from "@/lib/auth";
 import { useProfile, useRealtimeSync, useSettings } from "@/lib/queries";
@@ -11,17 +11,17 @@ import { WHATSAPP_SUPPORT } from "@/lib/constants";
 export const Route = createFileRoute("/app")({
   head: () => ({
     meta: [
-      { title: "YUVIX App — Join Free Fire Tournaments & Win Real Cash" },
+      { title: "BARMUDA CLASH App — Join Free Fire Tournaments & Win Real Cash" },
       {
         name: "description",
         content:
-          "Play daily Survival, Full Map, Clash Squad and Lone Wolf tournaments on YUVIX. Track your wallet, withdraw to UPI and climb the leaderboard.",
+          "Play daily Survival, Full Map, Clash Squad and Lone Wolf tournaments on BARMUDA CLASH. Track your wallet, withdraw to UPI and climb the leaderboard.",
       },
-      { property: "og:title", content: "YUVIX App — Join Tournaments & Win Real Cash" },
+      { property: "og:title", content: "BARMUDA CLASH App — Join Tournaments & Win Real Cash" },
       {
         property: "og:description",
         content:
-          "Daily skill-based tournaments, instant UPI withdrawals and 24/7 support inside the YUVIX app.",
+          "Daily skill-based tournaments, instant UPI withdrawals and 24/7 support inside the BARMUDA CLASH app.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -52,13 +52,13 @@ function AppLayout() {
   if (settings?.maintenance_mode) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-background px-6 text-center">
-        <img src={logo} alt="YUVIX" width={816} height={816} className="h-24 w-24 object-contain" />
+        <img src={logo} alt="BARMUDA CLASH" width={816} height={816} className="h-24 w-24 object-contain" />
         <h1 className="font-display text-xl font-black uppercase tracking-widest text-gradient-gold">
           Under maintenance
         </h1>
         <p className="max-w-sm text-sm text-muted-foreground">
           {settings.maintenance_message ||
-            "YUVIX is being upgraded. Matches will be back shortly — thanks for your patience."}
+            "BARMUDA CLASH is being upgraded. Matches will be back shortly — thanks for your patience."}
         </p>
         <a
           href={WHATSAPP_SUPPORT}
@@ -79,10 +79,10 @@ function AppLayout() {
     <div className="min-h-screen bg-background pb-20 text-foreground">
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-lg items-center gap-3 px-4 py-2.5">
-          <Link to="/app" className="flex items-center gap-2">
-            <img src={logo} alt="YUVIX" width={48} height={48} className="h-8 w-8 object-contain" />
-            <span className="font-display text-sm font-black tracking-widest text-gradient-gold">
-              YUVIX
+          <Link to="/app" className="flex min-w-0 items-center gap-2">
+            <img src={logo} alt="BARMUDA CLASH" width={48} height={48} className="h-8 w-8 shrink-0 object-contain" />
+            <span className="truncate whitespace-nowrap font-display text-[11px] font-black tracking-[0.14em] text-gradient-gold sm:text-sm">
+              BARMUDA CLASH
             </span>
           </Link>
           <div className="ml-auto flex items-center gap-2">

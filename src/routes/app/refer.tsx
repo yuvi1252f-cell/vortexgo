@@ -14,10 +14,10 @@ function ReferPage() {
   const link = typeof window !== "undefined" ? `${window.location.origin}/auth?ref=${code}` : "";
 
   async function share() {
-    const text = `Join me on YUVIX — daily Free Fire tournaments with instant UPI payouts. Use my referral code ${code}: ${link}`;
+    const text = `Join me on BARMUDA CLASH — daily Free Fire tournaments with instant UPI payouts. Use my referral code ${code}: ${link}`;
     if (navigator.share) {
       try {
-        await navigator.share({ title: "YUVIX", text });
+        await navigator.share({ title: "BARMUDA CLASH", text });
         return;
       } catch {
         /* user cancelled */
@@ -68,7 +68,7 @@ function ReferPage() {
         </p>
         <ol className="mt-3 space-y-2 text-sm text-muted-foreground">
           <li>1. Share your code with friends.</li>
-          <li>2. They enter it while creating their YUVIX account.</li>
+          <li>2. They enter it while creating their BARMUDA CLASH account.</li>
           <li>3. You instantly get 15 bonus coins, they get 10.</li>
           <li>4. Bonus coins can be used as entry fee for any match.</li>
         </ol>
