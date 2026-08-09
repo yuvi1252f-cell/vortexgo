@@ -150,43 +150,31 @@ export function useNotifications() {
   });
 }
 
-/** Recent winners across completed matches. */
+/** Recent winners across completed matches (privacy-safe view). */
 export function useRecentWinners() {
   return useQuery({
     queryKey: ["recent-winners"],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("tournament_entries")
-        .select("id, ff_name, prize, kills, rank, tournaments(title)")
-        .gt("prize", 0)
-        .order("created_at", { ascending: false })
-        .limit(10);
+      const { data, error } = await supabase.rpc("recent_winners");
       if (error) throw error;
       return data ?? [];
     },
   });
 }
 
-/** Season leaderboard by total winnings. */
+/** Season leaderboard by total winnings (privacy-safe view). */
 export function useLeaderboard() {
   return useQuery({
     queryKey: ["leaderboard"],
     staleTime: 30_000,
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("tournament_entries")
-        .select("ff_name, prize, kills")
-        .limit(1000);
+      const { data, error } = await supabase.rpc("leaderboard_top");
       if (error) throw error;
-      const map = new Map<string, { name: string; prize: number; kills: number }>();
-      for (const row of data ?? []) {
-        const key = row.ff_name.trim().toLowerCase();
-        const cur = map.get(key) ?? { name: row.ff_name, prize: 0, kills: 0 };
-        cur.prize += row.prize ?? 0;
-        cur.kills += row.kills ?? 0;
-        map.set(key, cur);
-      }
-      return [...map.values()].sort((a, b) => b.prize - a.prize || b.kills - a.kills).slice(0, 20);
+      return (data ?? []).map((r) => ({
+        name: r.ff_name,
+        prize: Number(r.prize ?? 0),
+        kills: Number(r.kills ?? 0),
+      }));
     },
   });
 }
