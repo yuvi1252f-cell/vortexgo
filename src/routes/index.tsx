@@ -147,7 +147,7 @@ function BarmudaLanding() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen text-foreground">
       {/* NAV */}
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${

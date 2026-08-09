@@ -77,7 +77,7 @@ function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-24 text-foreground">
+    <div className="min-h-screen pb-24 text-foreground">
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-2.5">
           <img src={logo} alt="BARMUDA CLASH" width={48} height={48} className="h-8 w-8 object-contain" />
