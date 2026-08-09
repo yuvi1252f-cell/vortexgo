@@ -23,7 +23,6 @@ import {
 
 import logo from "@/assets/barmuda-logo.png";
 import heroBg from "@/assets/hero-barmuda.jpg";
-import { InstallButton } from "@/components/InstallButton";
 
 
 export const Route = createFileRoute("/")({
@@ -313,7 +312,7 @@ function BarmudaLanding() {
               {FEATURES.map(({ icon: Icon, title, body }) => (
                 <article
                   key={title}
-                  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:premium-border"
+                  className="group relative overflow-hidden rounded-2xl border border-border glass-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:premium-border"
                 >
                   <div className="absolute -right-10 -top-10 size-28 rounded-full bg-primary/20 blur-2xl opacity-0 transition-opacity group-hover:opacity-100" />
                   <div className="relative flex size-12 items-center justify-center rounded-xl gradient-gold">
