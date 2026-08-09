@@ -42,17 +42,14 @@ function TournamentPage() {
   const { data: entries } = useQuery({
     queryKey: ["tournament-entries", id],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("tournament_entries")
-        .select("id,user_id,ff_name,team_no,position")
-        .eq("tournament_id", id)
-        .order("team_no");
+      const { data, error } = await supabase.rpc("tournament_roster", { p_tournament: id });
       if (error) throw error;
       return data ?? [];
     },
   });
 
-  const joined = !!entries?.some((e) => e.user_id === user?.id);
+  const joined = !!entries?.some((e) => e.is_me);
+
 
   const { data: room } = useQuery({
     queryKey: ["room", id, joined],
