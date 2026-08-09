@@ -283,9 +283,6 @@ function BarmudaLanding() {
               WhatsApp Support
             </a>
           </div>
-
-
-          </div>
         </section>
 
         {/* TICKER */}
