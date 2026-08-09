@@ -241,39 +241,49 @@ function BarmudaLanding() {
               alt="BARMUDA CLASH esports logo"
               width={816}
               height={816}
-              className="mx-auto h-40 w-40 animate-float object-contain sm:h-56 sm:w-56"
+              className="mx-auto h-24 w-24 animate-float object-contain sm:h-36 sm:w-36"
             />
 
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent backdrop-blur">
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent backdrop-blur">
               <Sparkles className="size-3.5" />
               Season 1 Live Now
             </div>
 
-            <h1 className="mt-5 font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="mt-4 font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
               Enter The <span className="text-gradient-gold">Arena</span>
             </h1>
 
-            <p className="mt-3 font-display text-sm font-bold uppercase tracking-[0.3em] text-accent sm:text-base">
-              Play · Compete · Conquer
-            </p>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground text-balance sm:text-lg">
-              BARMUDA CLASH is your competitive gaming destination. Join daily
-              skill-based tournaments, earn real rewards instantly, and rise up
-              a leaderboard built purely on skill.
+            <p className="mt-3 font-display text-xs font-bold uppercase tracking-[0.3em] text-accent sm:text-sm">
+              Gaming Tournament Platform
             </p>
 
-            <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
-              <InstallButton className="glow-gold" />
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-accent/40 bg-card/70 px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-accent backdrop-blur transition-transform hover:scale-[1.03] glow-soft"
+            <div className="mx-auto mt-6 flex max-w-sm flex-col gap-3">
+              <DownloadAppButton />
+              <Link
+                to="/app"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-accent/35 glass-card px-6 py-3.5 font-display text-sm font-black uppercase tracking-widest text-accent transition-transform hover:scale-[1.02]"
               >
-                <MessageCircle className="size-5" />
-                WhatsApp Support
-              </a>
+                <Gamepad2 className="size-5" />
+                Play In Browser
+              </Link>
             </div>
+
+            <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground text-balance sm:text-base">
+              Join daily skill-based tournaments, earn real rewards instantly, and rise up a
+              leaderboard built purely on skill.
+            </p>
+
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-accent"
+            >
+              <MessageCircle className="size-4" />
+              WhatsApp Support
+            </a>
+          </div>
+
 
           </div>
         </section>
