@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { DownloadAppButton } from "@/components/DownloadAppButton";
 import { useEffect, useState } from "react";
 import {
   ArrowUp,
