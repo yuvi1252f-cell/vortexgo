@@ -231,7 +231,7 @@ function HomePage() {
       </div>
 
       {(winners ?? []).length > 0 && (
-        <div className="rounded-2xl border border-border bg-card p-4">
+        <div className="rounded-2xl border border-border glass-card p-4">
           <p className="font-display text-xs font-black uppercase tracking-widest text-accent">
             Recent winners
           </p>
@@ -246,7 +246,7 @@ function HomePage() {
         </div>
       )}
 
-      <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4">
+      <div className="flex items-center gap-3 rounded-2xl border border-border glass-card p-4">
         <Trophy className="size-8 shrink-0 text-accent" />
         <p className="text-sm text-muted-foreground">
           Win matches, climb the season leaderboard and withdraw straight to UPI within minutes.

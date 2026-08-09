@@ -15,6 +15,7 @@ import { AuthProvider } from "../lib/auth";
 import { Toaster } from "../components/ui/sonner";
 import { registerServiceWorker } from "../lib/pwa";
 import { supabase } from "../integrations/supabase/client";
+import { BermudaBackdrop } from "../components/BermudaBackdrop";
 
 function NotFoundComponent() {
   return (
@@ -157,6 +158,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
+        <BermudaBackdrop />
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
         <Toaster position="top-center" richColors />

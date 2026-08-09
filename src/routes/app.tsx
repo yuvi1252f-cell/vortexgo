@@ -76,7 +76,7 @@ function AppLayout() {
     (profile?.deposit_coins ?? 0) + (profile?.winning_coins ?? 0) + (profile?.bonus_coins ?? 0);
 
   return (
-    <div className="min-h-screen bg-background pb-20 text-foreground">
+    <div className="min-h-screen pb-20 text-foreground">
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-lg items-center gap-3 px-4 py-2.5">
           <Link to="/app" className="flex min-w-0 items-center gap-2">

@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { DownloadAppButton } from "@/components/DownloadAppButton";
 import { useEffect, useState } from "react";
 import {
   ArrowUp,
@@ -22,7 +23,6 @@ import {
 
 import logo from "@/assets/barmuda-logo.png";
 import heroBg from "@/assets/hero-barmuda.jpg";
-import { InstallButton } from "@/components/InstallButton";
 
 
 export const Route = createFileRoute("/")({
@@ -147,7 +147,7 @@ function BarmudaLanding() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen text-foreground">
       {/* NAV */}
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -241,40 +241,47 @@ function BarmudaLanding() {
               alt="BARMUDA CLASH esports logo"
               width={816}
               height={816}
-              className="mx-auto h-40 w-40 animate-float object-contain sm:h-56 sm:w-56"
+              className="mx-auto h-24 w-24 animate-float object-contain sm:h-36 sm:w-36"
             />
 
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent backdrop-blur">
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent backdrop-blur">
               <Sparkles className="size-3.5" />
               Season 1 Live Now
             </div>
 
-            <h1 className="mt-5 font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="mt-4 font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
               Enter The <span className="text-gradient-gold">Arena</span>
             </h1>
 
-            <p className="mt-3 font-display text-sm font-bold uppercase tracking-[0.3em] text-accent sm:text-base">
-              Play · Compete · Conquer
-            </p>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground text-balance sm:text-lg">
-              BARMUDA CLASH is your competitive gaming destination. Join daily
-              skill-based tournaments, earn real rewards instantly, and rise up
-              a leaderboard built purely on skill.
+            <p className="mt-3 font-display text-xs font-bold uppercase tracking-[0.3em] text-accent sm:text-sm">
+              Gaming Tournament Platform
             </p>
 
-            <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
-              <InstallButton className="glow-gold" />
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-accent/40 bg-card/70 px-6 py-4 font-display text-sm font-black uppercase tracking-widest text-accent backdrop-blur transition-transform hover:scale-[1.03] glow-soft"
+            <div className="mx-auto mt-6 flex max-w-sm flex-col gap-3">
+              <DownloadAppButton />
+              <Link
+                to="/app"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-accent/35 glass-card px-6 py-3.5 font-display text-sm font-black uppercase tracking-widest text-accent transition-transform hover:scale-[1.02]"
               >
-                <MessageCircle className="size-5" />
-                WhatsApp Support
-              </a>
+                <Gamepad2 className="size-5" />
+                Play In Browser
+              </Link>
             </div>
 
+            <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground text-balance sm:text-base">
+              Join daily skill-based tournaments, earn real rewards instantly, and rise up a
+              leaderboard built purely on skill.
+            </p>
+
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-accent"
+            >
+              <MessageCircle className="size-4" />
+              WhatsApp Support
+            </a>
           </div>
         </section>
 
@@ -305,7 +312,7 @@ function BarmudaLanding() {
               {FEATURES.map(({ icon: Icon, title, body }) => (
                 <article
                   key={title}
-                  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:premium-border"
+                  className="group relative overflow-hidden rounded-2xl border border-border glass-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:premium-border"
                 >
                   <div className="absolute -right-10 -top-10 size-28 rounded-full bg-primary/20 blur-2xl opacity-0 transition-opacity group-hover:opacity-100" />
                   <div className="relative flex size-12 items-center justify-center rounded-xl gradient-gold">

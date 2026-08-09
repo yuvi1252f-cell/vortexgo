@@ -58,7 +58,7 @@ function DownloadPage() {
   }
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background px-5 py-12 text-foreground">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-5 py-12 text-foreground">
       <div className="absolute inset-0 hex-grid opacity-50" />
       <div className="absolute left-1/2 top-1/4 size-72 -translate-x-1/2 rounded-full bg-primary/25 blur-[110px]" />
 
