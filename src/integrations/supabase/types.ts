@@ -482,6 +482,25 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      leaderboard_top: {
+        Args: never
+        Returns: {
+          ff_name: string
+          kills: number
+          prize: number
+        }[]
+      }
+      recent_winners: {
+        Args: never
+        Returns: {
+          ff_name: string
+          id: string
+          kills: number
+          prize: number
+          rank: number
+          title: string
+        }[]
+      }
       request_withdrawal: {
         Args: { p_amount: number; p_method: string; p_upi_id: string }
         Returns: {
@@ -506,6 +525,16 @@ export type Database = {
           isOneToOne: true
           isSetofReturn: false
         }
+      }
+      tournament_roster: {
+        Args: { p_tournament: string }
+        Returns: {
+          ff_name: string
+          id: string
+          is_me: boolean
+          slot_position: string
+          team_no: number
+        }[]
       }
     }
     Enums: {
