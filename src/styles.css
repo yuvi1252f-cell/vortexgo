@@ -201,12 +201,20 @@
       0 18px 40px -28px oklch(0.56 0.21 262 / 55%);
   }
 
+  /* Legacy name kept: now a soft atmospheric wash instead of a grid pattern. */
   .hex-grid {
     background-image:
-      linear-gradient(oklch(0.2 0.01 260 / 4%) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.2 0.01 260 / 4%) 1px, transparent 1px);
-    background-size: 48px 48px;
+      radial-gradient(80% 60% at 20% 0%, oklch(0.56 0.21 262 / 8%) 0%, transparent 60%),
+      radial-gradient(70% 50% at 100% 30%, oklch(0.56 0.21 262 / 6%) 0%, transparent 65%);
   }
+
+  .glass-card {
+    background-color: oklch(1 0 0 / 82%);
+    backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid oklch(0.2 0.01 260 / 10%);
+    box-shadow: 0 14px 36px -26px oklch(0.2 0.03 260 / 45%);
+  }
+
 
   .animate-float {
     animation: vg-float 6s ease-in-out infinite;
