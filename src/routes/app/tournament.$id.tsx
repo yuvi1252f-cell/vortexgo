@@ -220,7 +220,7 @@ function TournamentPage() {
             {(entries ?? []).map((e) => (
               <li key={e.id} className="flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">
-                  Team {e.team_no} · Pos {e.position}
+                  Team {e.team_no} · Pos {e.slot_position}
                 </span>
                 <span className="font-semibold">{e.ff_name}</span>
               </li>
