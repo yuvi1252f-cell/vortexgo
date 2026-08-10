@@ -30,6 +30,7 @@ import { Route as AppReferRouteImport } from './routes/app/refer'
 import { Route as AppWalletRouteImport } from './routes/app/wallet'
 import { Route as ControlIndexRouteImport } from './routes/control/index'
 import { Route as ControlAnnouncementsRouteImport } from './routes/control/announcements'
+import { Route as ControlAuditRouteImport } from './routes/control/audit'
 import { Route as ControlBannersRouteImport } from './routes/control/banners'
 import { Route as ControlContentRouteImport } from './routes/control/content'
 import { Route as ControlPaymentsRouteImport } from './routes/control/payments'
@@ -145,6 +146,11 @@ const ControlAnnouncementsRoute = ControlAnnouncementsRouteImport.update({
   path: '/announcements',
   getParentRoute: () => ControlRoute,
 } as any)
+const ControlAuditRoute = ControlAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => ControlRoute,
+} as any)
 const ControlBannersRoute = ControlBannersRouteImport.update({
   id: '/banners',
   path: '/banners',
@@ -210,6 +216,7 @@ export interface FileRoutesByFullPath {
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
   '/control/announcements': typeof ControlAnnouncementsRoute
+  '/control/audit': typeof ControlAuditRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/control/payments': typeof ControlPaymentsRoute
@@ -239,6 +246,7 @@ export interface FileRoutesByTo {
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
   '/control/announcements': typeof ControlAnnouncementsRoute
+  '/control/audit': typeof ControlAuditRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/control/payments': typeof ControlPaymentsRoute
@@ -272,6 +280,7 @@ export interface FileRoutesById {
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
   '/control/announcements': typeof ControlAnnouncementsRoute
+  '/control/audit': typeof ControlAuditRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/control/payments': typeof ControlPaymentsRoute
@@ -306,6 +315,7 @@ export interface FileRouteTypes {
     | '/app/refer'
     | '/app/wallet'
     | '/control/announcements'
+    | '/control/audit'
     | '/control/banners'
     | '/control/content'
     | '/control/payments'
@@ -335,6 +345,7 @@ export interface FileRouteTypes {
     | '/app/refer'
     | '/app/wallet'
     | '/control/announcements'
+    | '/control/audit'
     | '/control/banners'
     | '/control/content'
     | '/control/payments'
@@ -367,6 +378,7 @@ export interface FileRouteTypes {
     | '/app/refer'
     | '/app/wallet'
     | '/control/announcements'
+    | '/control/audit'
     | '/control/banners'
     | '/control/content'
     | '/control/payments'
@@ -539,6 +551,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ControlAnnouncementsRouteImport
       parentRoute: typeof ControlRoute
     }
+    '/control/audit': {
+      id: '/control/audit'
+      path: '/audit'
+      fullPath: '/control/audit'
+      preLoaderRoute: typeof ControlAuditRouteImport
+      parentRoute: typeof ControlRoute
+    }
     '/control/banners': {
       id: '/control/banners'
       path: '/banners'
@@ -651,6 +670,7 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
 interface ControlRouteChildren {
   ControlAnnouncementsRoute: typeof ControlAnnouncementsRoute
+  ControlAuditRoute: typeof ControlAuditRoute
   ControlBannersRoute: typeof ControlBannersRoute
   ControlContentRoute: typeof ControlContentRoute
   ControlPaymentsRoute: typeof ControlPaymentsRoute
@@ -664,6 +684,7 @@ interface ControlRouteChildren {
 
 const ControlRouteChildren: ControlRouteChildren = {
   ControlAnnouncementsRoute: ControlAnnouncementsRoute,
+  ControlAuditRoute: ControlAuditRoute,
   ControlBannersRoute: ControlBannersRoute,
   ControlContentRoute: ControlContentRoute,
   ControlPaymentsRoute: ControlPaymentsRoute,
