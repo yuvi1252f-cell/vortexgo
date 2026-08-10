@@ -28,6 +28,7 @@ import { Route as AppNotificationsRouteImport } from './routes/app/notifications
 import { Route as AppProfileRouteImport } from './routes/app/profile'
 import { Route as AppReferRouteImport } from './routes/app/refer'
 import { Route as AppWalletRouteImport } from './routes/app/wallet'
+import { Route as ControlIndexRouteImport } from './routes/control/index'
 import { Route as AppTournamentIdRouteImport } from './routes/app/tournament.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -125,6 +126,11 @@ const AppWalletRoute = AppWalletRouteImport.update({
   path: '/wallet',
   getParentRoute: () => AppRoute,
 } as any)
+const ControlIndexRoute = ControlIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ControlRoute,
+} as any)
 const AppTournamentIdRoute = AppTournamentIdRouteImport.update({
   id: '/tournament/$id',
   path: '/tournament/$id',
@@ -136,7 +142,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
-  '/control': typeof ControlRoute
+  '/control': typeof ControlRouteWithChildren
   '/download': typeof DownloadRoute
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/payments': typeof AdminPaymentsRoute
@@ -151,12 +157,12 @@ export interface FileRoutesByFullPath {
   '/app/wallet': typeof AppWalletRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
+  '/control/': typeof ControlIndexRoute
   '/app/tournament/$id': typeof AppTournamentIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
-  '/control': typeof ControlRoute
   '/download': typeof DownloadRoute
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/payments': typeof AdminPaymentsRoute
@@ -171,6 +177,7 @@ export interface FileRoutesByTo {
   '/app/wallet': typeof AppWalletRoute
   '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
+  '/control': typeof ControlIndexRoute
   '/app/tournament/$id': typeof AppTournamentIdRoute
 }
 export interface FileRoutesById {
@@ -179,7 +186,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
-  '/control': typeof ControlRoute
+  '/control': typeof ControlRouteWithChildren
   '/download': typeof DownloadRoute
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/payments': typeof AdminPaymentsRoute
@@ -194,6 +201,7 @@ export interface FileRoutesById {
   '/app/wallet': typeof AppWalletRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
+  '/control/': typeof ControlIndexRoute
   '/app/tournament/$id': typeof AppTournamentIdRoute
 }
 export interface FileRouteTypes {
@@ -218,12 +226,12 @@ export interface FileRouteTypes {
     | '/app/wallet'
     | '/admin/'
     | '/app/'
+    | '/control/'
     | '/app/tournament/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
-    | '/control'
     | '/download'
     | '/admin/announcements'
     | '/admin/payments'
@@ -238,6 +246,7 @@ export interface FileRouteTypes {
     | '/app/wallet'
     | '/admin'
     | '/app'
+    | '/control'
     | '/app/tournament/$id'
   id:
     | '__root__'
@@ -260,6 +269,7 @@ export interface FileRouteTypes {
     | '/app/wallet'
     | '/admin/'
     | '/app/'
+    | '/control/'
     | '/app/tournament/$id'
   fileRoutesById: FileRoutesById
 }
@@ -268,7 +278,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRoute
-  ControlRoute: typeof ControlRoute
+  ControlRoute: typeof ControlRouteWithChildren
   DownloadRoute: typeof DownloadRoute
 }
 
@@ -407,6 +417,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppWalletRouteImport
       parentRoute: typeof AppRoute
     }
+    '/control/': {
+      id: '/control/'
+      path: '/'
+      fullPath: '/control/'
+      preLoaderRoute: typeof ControlIndexRouteImport
+      parentRoute: typeof ControlRoute
+    }
     '/app/tournament/$id': {
       id: '/app/tournament/$id'
       path: '/tournament/$id'
@@ -461,12 +478,23 @@ const AppRouteChildren: AppRouteChildren = {
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
+interface ControlRouteChildren {
+  ControlIndexRoute: typeof ControlIndexRoute
+}
+
+const ControlRouteChildren: ControlRouteChildren = {
+  ControlIndexRoute: ControlIndexRoute,
+}
+
+const ControlRouteWithChildren =
+  ControlRoute._addFileChildren(ControlRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRouteWithChildren,
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRoute,
-  ControlRoute: ControlRoute,
+  ControlRoute: ControlRouteWithChildren,
   DownloadRoute: DownloadRoute,
 }
 export const routeTree = rootRouteImport
