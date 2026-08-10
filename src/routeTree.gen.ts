@@ -30,6 +30,7 @@ import { Route as AppReferRouteImport } from './routes/app/refer'
 import { Route as AppWalletRouteImport } from './routes/app/wallet'
 import { Route as ControlIndexRouteImport } from './routes/control/index'
 import { Route as ControlAnnouncementsRouteImport } from './routes/control/announcements'
+import { Route as ControlAppearanceRouteImport } from './routes/control/appearance'
 import { Route as ControlAuditRouteImport } from './routes/control/audit'
 import { Route as ControlBannersRouteImport } from './routes/control/banners'
 import { Route as ControlContentRouteImport } from './routes/control/content'
@@ -146,6 +147,11 @@ const ControlAnnouncementsRoute = ControlAnnouncementsRouteImport.update({
   path: '/announcements',
   getParentRoute: () => ControlRoute,
 } as any)
+const ControlAppearanceRoute = ControlAppearanceRouteImport.update({
+  id: '/appearance',
+  path: '/appearance',
+  getParentRoute: () => ControlRoute,
+} as any)
 const ControlAuditRoute = ControlAuditRouteImport.update({
   id: '/audit',
   path: '/audit',
@@ -216,6 +222,7 @@ export interface FileRoutesByFullPath {
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
   '/control/announcements': typeof ControlAnnouncementsRoute
+  '/control/appearance': typeof ControlAppearanceRoute
   '/control/audit': typeof ControlAuditRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
@@ -246,6 +253,7 @@ export interface FileRoutesByTo {
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
   '/control/announcements': typeof ControlAnnouncementsRoute
+  '/control/appearance': typeof ControlAppearanceRoute
   '/control/audit': typeof ControlAuditRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
@@ -280,6 +288,7 @@ export interface FileRoutesById {
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
   '/control/announcements': typeof ControlAnnouncementsRoute
+  '/control/appearance': typeof ControlAppearanceRoute
   '/control/audit': typeof ControlAuditRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
@@ -315,6 +324,7 @@ export interface FileRouteTypes {
     | '/app/refer'
     | '/app/wallet'
     | '/control/announcements'
+    | '/control/appearance'
     | '/control/audit'
     | '/control/banners'
     | '/control/content'
@@ -345,6 +355,7 @@ export interface FileRouteTypes {
     | '/app/refer'
     | '/app/wallet'
     | '/control/announcements'
+    | '/control/appearance'
     | '/control/audit'
     | '/control/banners'
     | '/control/content'
@@ -378,6 +389,7 @@ export interface FileRouteTypes {
     | '/app/refer'
     | '/app/wallet'
     | '/control/announcements'
+    | '/control/appearance'
     | '/control/audit'
     | '/control/banners'
     | '/control/content'
@@ -551,6 +563,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ControlAnnouncementsRouteImport
       parentRoute: typeof ControlRoute
     }
+    '/control/appearance': {
+      id: '/control/appearance'
+      path: '/appearance'
+      fullPath: '/control/appearance'
+      preLoaderRoute: typeof ControlAppearanceRouteImport
+      parentRoute: typeof ControlRoute
+    }
     '/control/audit': {
       id: '/control/audit'
       path: '/audit'
@@ -670,6 +689,7 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
 interface ControlRouteChildren {
   ControlAnnouncementsRoute: typeof ControlAnnouncementsRoute
+  ControlAppearanceRoute: typeof ControlAppearanceRoute
   ControlAuditRoute: typeof ControlAuditRoute
   ControlBannersRoute: typeof ControlBannersRoute
   ControlContentRoute: typeof ControlContentRoute
@@ -684,6 +704,7 @@ interface ControlRouteChildren {
 
 const ControlRouteChildren: ControlRouteChildren = {
   ControlAnnouncementsRoute: ControlAnnouncementsRoute,
+  ControlAppearanceRoute: ControlAppearanceRoute,
   ControlAuditRoute: ControlAuditRoute,
   ControlBannersRoute: ControlBannersRoute,
   ControlContentRoute: ControlContentRoute,
