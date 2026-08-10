@@ -32,6 +32,7 @@ import { Route as ControlIndexRouteImport } from './routes/control/index'
 import { Route as ControlBannersRouteImport } from './routes/control/banners'
 import { Route as ControlContentRouteImport } from './routes/control/content'
 import { Route as ControlRulesRouteImport } from './routes/control/rules'
+import { Route as ControlTournamentsRouteImport } from './routes/control/tournaments'
 import { Route as AppTournamentIdRouteImport } from './routes/app/tournament.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -149,6 +150,11 @@ const ControlRulesRoute = ControlRulesRouteImport.update({
   path: '/rules',
   getParentRoute: () => ControlRoute,
 } as any)
+const ControlTournamentsRoute = ControlTournamentsRouteImport.update({
+  id: '/tournaments',
+  path: '/tournaments',
+  getParentRoute: () => ControlRoute,
+} as any)
 const AppTournamentIdRoute = AppTournamentIdRouteImport.update({
   id: '/tournament/$id',
   path: '/tournament/$id',
@@ -176,6 +182,7 @@ export interface FileRoutesByFullPath {
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/control/rules': typeof ControlRulesRoute
+  '/control/tournaments': typeof ControlTournamentsRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
   '/control/': typeof ControlIndexRoute
@@ -199,6 +206,7 @@ export interface FileRoutesByTo {
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/control/rules': typeof ControlRulesRoute
+  '/control/tournaments': typeof ControlTournamentsRoute
   '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
   '/control': typeof ControlIndexRoute
@@ -226,6 +234,7 @@ export interface FileRoutesById {
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/control/rules': typeof ControlRulesRoute
+  '/control/tournaments': typeof ControlTournamentsRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
   '/control/': typeof ControlIndexRoute
@@ -254,6 +263,7 @@ export interface FileRouteTypes {
     | '/control/banners'
     | '/control/content'
     | '/control/rules'
+    | '/control/tournaments'
     | '/admin/'
     | '/app/'
     | '/control/'
@@ -277,6 +287,7 @@ export interface FileRouteTypes {
     | '/control/banners'
     | '/control/content'
     | '/control/rules'
+    | '/control/tournaments'
     | '/admin'
     | '/app'
     | '/control'
@@ -303,6 +314,7 @@ export interface FileRouteTypes {
     | '/control/banners'
     | '/control/content'
     | '/control/rules'
+    | '/control/tournaments'
     | '/admin/'
     | '/app/'
     | '/control/'
@@ -481,6 +493,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ControlRulesRouteImport
       parentRoute: typeof ControlRoute
     }
+    '/control/tournaments': {
+      id: '/control/tournaments'
+      path: '/tournaments'
+      fullPath: '/control/tournaments'
+      preLoaderRoute: typeof ControlTournamentsRouteImport
+      parentRoute: typeof ControlRoute
+    }
     '/app/tournament/$id': {
       id: '/app/tournament/$id'
       path: '/tournament/$id'
@@ -539,6 +558,7 @@ interface ControlRouteChildren {
   ControlBannersRoute: typeof ControlBannersRoute
   ControlContentRoute: typeof ControlContentRoute
   ControlRulesRoute: typeof ControlRulesRoute
+  ControlTournamentsRoute: typeof ControlTournamentsRoute
   ControlIndexRoute: typeof ControlIndexRoute
 }
 
@@ -546,6 +566,7 @@ const ControlRouteChildren: ControlRouteChildren = {
   ControlBannersRoute: ControlBannersRoute,
   ControlContentRoute: ControlContentRoute,
   ControlRulesRoute: ControlRulesRoute,
+  ControlTournamentsRoute: ControlTournamentsRoute,
   ControlIndexRoute: ControlIndexRoute,
 }
 
