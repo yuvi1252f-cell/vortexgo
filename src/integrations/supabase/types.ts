@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_audit_log: {
+        Row: {
+          action: string
+          actor: string | null
+          created_at: string
+          details: Json
+          entity: string
+          entity_id: string | null
+          id: string
+        }
+        Insert: {
+          action: string
+          actor?: string | null
+          created_at?: string
+          details?: Json
+          entity?: string
+          entity_id?: string | null
+          id?: string
+        }
+        Update: {
+          action?: string
+          actor?: string | null
+          created_at?: string
+          details?: Json
+          entity?: string
+          entity_id?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
       announcements: {
         Row: {
           active: boolean
@@ -38,6 +68,36 @@ export type Database = {
           id?: string
           title?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      app_content: {
+        Row: {
+          created_at: string
+          group_name: string
+          key: string
+          label: string
+          sort_order: number
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          group_name?: string
+          key: string
+          label?: string
+          sort_order?: number
+          updated_at?: string
+          value?: string
+        }
+        Update: {
+          created_at?: string
+          group_name?: string
+          key?: string
+          label?: string
+          sort_order?: number
+          updated_at?: string
+          value?: string
         }
         Relationships: []
       }
@@ -107,6 +167,51 @@ export type Database = {
           update_notice?: string
           updated_at?: string
           upi_id?: string
+        }
+        Relationships: []
+      }
+      banners: {
+        Row: {
+          action_url: string | null
+          active: boolean
+          button_text: string
+          created_at: string
+          ends_at: string | null
+          id: string
+          image_url: string | null
+          sort_order: number
+          starts_at: string | null
+          subtitle: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          action_url?: string | null
+          active?: boolean
+          button_text?: string
+          created_at?: string
+          ends_at?: string | null
+          id?: string
+          image_url?: string | null
+          sort_order?: number
+          starts_at?: string | null
+          subtitle?: string
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          action_url?: string | null
+          active?: boolean
+          button_text?: string
+          created_at?: string
+          ends_at?: string | null
+          id?: string
+          image_url?: string | null
+          sort_order?: number
+          starts_at?: string | null
+          subtitle?: string
+          title?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -193,6 +298,39 @@ export type Database = {
           },
         ]
       }
+      rules_sections: {
+        Row: {
+          body: string
+          category: string
+          created_at: string
+          id: string
+          published: boolean
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body?: string
+          category?: string
+          created_at?: string
+          id?: string
+          published?: boolean
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string
+          category?: string
+          created_at?: string
+          id?: string
+          published?: boolean
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       tournament_entries: {
         Row: {
           created_at: string
@@ -245,6 +383,7 @@ export type Database = {
           banner_url: string | null
           category: Database["public"]["Enums"]["tournament_category"]
           created_at: string
+          description: string
           entry_fee: number
           filled_slots: number
           game: string
@@ -255,6 +394,7 @@ export type Database = {
           per_kill: number
           prize_pool: number
           published: boolean
+          results_published: boolean
           room_id: string | null
           room_password: string | null
           room_reveal_minutes: number
@@ -268,6 +408,7 @@ export type Database = {
           banner_url?: string | null
           category?: Database["public"]["Enums"]["tournament_category"]
           created_at?: string
+          description?: string
           entry_fee?: number
           filled_slots?: number
           game?: string
@@ -278,6 +419,7 @@ export type Database = {
           per_kill?: number
           prize_pool?: number
           published?: boolean
+          results_published?: boolean
           room_id?: string | null
           room_password?: string | null
           room_reveal_minutes?: number
@@ -291,6 +433,7 @@ export type Database = {
           banner_url?: string | null
           category?: Database["public"]["Enums"]["tournament_category"]
           created_at?: string
+          description?: string
           entry_fee?: number
           filled_slots?: number
           game?: string
@@ -301,6 +444,7 @@ export type Database = {
           per_kill?: number
           prize_pool?: number
           published?: boolean
+          results_published?: boolean
           room_id?: string | null
           room_password?: string | null
           room_reveal_minutes?: number

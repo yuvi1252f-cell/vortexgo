@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ControlRouteImport } from './routes/control'
 import { Route as DownloadRouteImport } from './routes/download'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminAnnouncementsRouteImport } from './routes/admin/announcements'
@@ -27,6 +28,18 @@ import { Route as AppNotificationsRouteImport } from './routes/app/notifications
 import { Route as AppProfileRouteImport } from './routes/app/profile'
 import { Route as AppReferRouteImport } from './routes/app/refer'
 import { Route as AppWalletRouteImport } from './routes/app/wallet'
+import { Route as ControlIndexRouteImport } from './routes/control/index'
+import { Route as ControlAnnouncementsRouteImport } from './routes/control/announcements'
+import { Route as ControlAppearanceRouteImport } from './routes/control/appearance'
+import { Route as ControlAuditRouteImport } from './routes/control/audit'
+import { Route as ControlBannersRouteImport } from './routes/control/banners'
+import { Route as ControlContentRouteImport } from './routes/control/content'
+import { Route as ControlPaymentsRouteImport } from './routes/control/payments'
+import { Route as ControlPlayersRouteImport } from './routes/control/players'
+import { Route as ControlResultsRouteImport } from './routes/control/results'
+import { Route as ControlRulesRouteImport } from './routes/control/rules'
+import { Route as ControlSettingsRouteImport } from './routes/control/settings'
+import { Route as ControlTournamentsRouteImport } from './routes/control/tournaments'
 import { Route as AppTournamentIdRouteImport } from './routes/app/tournament.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +60,11 @@ const AppRoute = AppRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ControlRoute = ControlRouteImport.update({
+  id: '/control',
+  path: '/control',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DownloadRoute = DownloadRouteImport.update({
@@ -119,6 +137,66 @@ const AppWalletRoute = AppWalletRouteImport.update({
   path: '/wallet',
   getParentRoute: () => AppRoute,
 } as any)
+const ControlIndexRoute = ControlIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlAnnouncementsRoute = ControlAnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlAppearanceRoute = ControlAppearanceRouteImport.update({
+  id: '/appearance',
+  path: '/appearance',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlAuditRoute = ControlAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlBannersRoute = ControlBannersRouteImport.update({
+  id: '/banners',
+  path: '/banners',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlContentRoute = ControlContentRouteImport.update({
+  id: '/content',
+  path: '/content',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlPaymentsRoute = ControlPaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlPlayersRoute = ControlPlayersRouteImport.update({
+  id: '/players',
+  path: '/players',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlResultsRoute = ControlResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlRulesRoute = ControlRulesRouteImport.update({
+  id: '/rules',
+  path: '/rules',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlSettingsRoute = ControlSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => ControlRoute,
+} as any)
+const ControlTournamentsRoute = ControlTournamentsRouteImport.update({
+  id: '/tournaments',
+  path: '/tournaments',
+  getParentRoute: () => ControlRoute,
+} as any)
 const AppTournamentIdRoute = AppTournamentIdRouteImport.update({
   id: '/tournament/$id',
   path: '/tournament/$id',
@@ -130,6 +208,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/control': typeof ControlRouteWithChildren
   '/download': typeof DownloadRoute
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/payments': typeof AdminPaymentsRoute
@@ -142,8 +221,20 @@ export interface FileRoutesByFullPath {
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
+  '/control/announcements': typeof ControlAnnouncementsRoute
+  '/control/appearance': typeof ControlAppearanceRoute
+  '/control/audit': typeof ControlAuditRoute
+  '/control/banners': typeof ControlBannersRoute
+  '/control/content': typeof ControlContentRoute
+  '/control/payments': typeof ControlPaymentsRoute
+  '/control/players': typeof ControlPlayersRoute
+  '/control/results': typeof ControlResultsRoute
+  '/control/rules': typeof ControlRulesRoute
+  '/control/settings': typeof ControlSettingsRoute
+  '/control/tournaments': typeof ControlTournamentsRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
+  '/control/': typeof ControlIndexRoute
   '/app/tournament/$id': typeof AppTournamentIdRoute
 }
 export interface FileRoutesByTo {
@@ -161,8 +252,20 @@ export interface FileRoutesByTo {
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
+  '/control/announcements': typeof ControlAnnouncementsRoute
+  '/control/appearance': typeof ControlAppearanceRoute
+  '/control/audit': typeof ControlAuditRoute
+  '/control/banners': typeof ControlBannersRoute
+  '/control/content': typeof ControlContentRoute
+  '/control/payments': typeof ControlPaymentsRoute
+  '/control/players': typeof ControlPlayersRoute
+  '/control/results': typeof ControlResultsRoute
+  '/control/rules': typeof ControlRulesRoute
+  '/control/settings': typeof ControlSettingsRoute
+  '/control/tournaments': typeof ControlTournamentsRoute
   '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
+  '/control': typeof ControlIndexRoute
   '/app/tournament/$id': typeof AppTournamentIdRoute
 }
 export interface FileRoutesById {
@@ -171,6 +274,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/control': typeof ControlRouteWithChildren
   '/download': typeof DownloadRoute
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/payments': typeof AdminPaymentsRoute
@@ -183,8 +287,20 @@ export interface FileRoutesById {
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
+  '/control/announcements': typeof ControlAnnouncementsRoute
+  '/control/appearance': typeof ControlAppearanceRoute
+  '/control/audit': typeof ControlAuditRoute
+  '/control/banners': typeof ControlBannersRoute
+  '/control/content': typeof ControlContentRoute
+  '/control/payments': typeof ControlPaymentsRoute
+  '/control/players': typeof ControlPlayersRoute
+  '/control/results': typeof ControlResultsRoute
+  '/control/rules': typeof ControlRulesRoute
+  '/control/settings': typeof ControlSettingsRoute
+  '/control/tournaments': typeof ControlTournamentsRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
+  '/control/': typeof ControlIndexRoute
   '/app/tournament/$id': typeof AppTournamentIdRoute
 }
 export interface FileRouteTypes {
@@ -194,6 +310,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/app'
     | '/auth'
+    | '/control'
     | '/download'
     | '/admin/announcements'
     | '/admin/payments'
@@ -206,8 +323,20 @@ export interface FileRouteTypes {
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
+    | '/control/announcements'
+    | '/control/appearance'
+    | '/control/audit'
+    | '/control/banners'
+    | '/control/content'
+    | '/control/payments'
+    | '/control/players'
+    | '/control/results'
+    | '/control/rules'
+    | '/control/settings'
+    | '/control/tournaments'
     | '/admin/'
     | '/app/'
+    | '/control/'
     | '/app/tournament/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -225,8 +354,20 @@ export interface FileRouteTypes {
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
+    | '/control/announcements'
+    | '/control/appearance'
+    | '/control/audit'
+    | '/control/banners'
+    | '/control/content'
+    | '/control/payments'
+    | '/control/players'
+    | '/control/results'
+    | '/control/rules'
+    | '/control/settings'
+    | '/control/tournaments'
     | '/admin'
     | '/app'
+    | '/control'
     | '/app/tournament/$id'
   id:
     | '__root__'
@@ -234,6 +375,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/app'
     | '/auth'
+    | '/control'
     | '/download'
     | '/admin/announcements'
     | '/admin/payments'
@@ -246,8 +388,20 @@ export interface FileRouteTypes {
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
+    | '/control/announcements'
+    | '/control/appearance'
+    | '/control/audit'
+    | '/control/banners'
+    | '/control/content'
+    | '/control/payments'
+    | '/control/players'
+    | '/control/results'
+    | '/control/rules'
+    | '/control/settings'
+    | '/control/tournaments'
     | '/admin/'
     | '/app/'
+    | '/control/'
     | '/app/tournament/$id'
   fileRoutesById: FileRoutesById
 }
@@ -256,6 +410,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ControlRoute: typeof ControlRouteWithChildren
   DownloadRoute: typeof DownloadRoute
 }
 
@@ -287,6 +442,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/control': {
+      id: '/control'
+      path: '/control'
+      fullPath: '/control'
+      preLoaderRoute: typeof ControlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/download': {
@@ -387,6 +549,90 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppWalletRouteImport
       parentRoute: typeof AppRoute
     }
+    '/control/': {
+      id: '/control/'
+      path: '/'
+      fullPath: '/control/'
+      preLoaderRoute: typeof ControlIndexRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/announcements': {
+      id: '/control/announcements'
+      path: '/announcements'
+      fullPath: '/control/announcements'
+      preLoaderRoute: typeof ControlAnnouncementsRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/appearance': {
+      id: '/control/appearance'
+      path: '/appearance'
+      fullPath: '/control/appearance'
+      preLoaderRoute: typeof ControlAppearanceRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/audit': {
+      id: '/control/audit'
+      path: '/audit'
+      fullPath: '/control/audit'
+      preLoaderRoute: typeof ControlAuditRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/banners': {
+      id: '/control/banners'
+      path: '/banners'
+      fullPath: '/control/banners'
+      preLoaderRoute: typeof ControlBannersRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/content': {
+      id: '/control/content'
+      path: '/content'
+      fullPath: '/control/content'
+      preLoaderRoute: typeof ControlContentRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/payments': {
+      id: '/control/payments'
+      path: '/payments'
+      fullPath: '/control/payments'
+      preLoaderRoute: typeof ControlPaymentsRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/players': {
+      id: '/control/players'
+      path: '/players'
+      fullPath: '/control/players'
+      preLoaderRoute: typeof ControlPlayersRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/results': {
+      id: '/control/results'
+      path: '/results'
+      fullPath: '/control/results'
+      preLoaderRoute: typeof ControlResultsRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/rules': {
+      id: '/control/rules'
+      path: '/rules'
+      fullPath: '/control/rules'
+      preLoaderRoute: typeof ControlRulesRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/settings': {
+      id: '/control/settings'
+      path: '/settings'
+      fullPath: '/control/settings'
+      preLoaderRoute: typeof ControlSettingsRouteImport
+      parentRoute: typeof ControlRoute
+    }
+    '/control/tournaments': {
+      id: '/control/tournaments'
+      path: '/tournaments'
+      fullPath: '/control/tournaments'
+      preLoaderRoute: typeof ControlTournamentsRouteImport
+      parentRoute: typeof ControlRoute
+    }
     '/app/tournament/$id': {
       id: '/app/tournament/$id'
       path: '/tournament/$id'
@@ -441,11 +687,45 @@ const AppRouteChildren: AppRouteChildren = {
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
+interface ControlRouteChildren {
+  ControlAnnouncementsRoute: typeof ControlAnnouncementsRoute
+  ControlAppearanceRoute: typeof ControlAppearanceRoute
+  ControlAuditRoute: typeof ControlAuditRoute
+  ControlBannersRoute: typeof ControlBannersRoute
+  ControlContentRoute: typeof ControlContentRoute
+  ControlPaymentsRoute: typeof ControlPaymentsRoute
+  ControlPlayersRoute: typeof ControlPlayersRoute
+  ControlResultsRoute: typeof ControlResultsRoute
+  ControlRulesRoute: typeof ControlRulesRoute
+  ControlSettingsRoute: typeof ControlSettingsRoute
+  ControlTournamentsRoute: typeof ControlTournamentsRoute
+  ControlIndexRoute: typeof ControlIndexRoute
+}
+
+const ControlRouteChildren: ControlRouteChildren = {
+  ControlAnnouncementsRoute: ControlAnnouncementsRoute,
+  ControlAppearanceRoute: ControlAppearanceRoute,
+  ControlAuditRoute: ControlAuditRoute,
+  ControlBannersRoute: ControlBannersRoute,
+  ControlContentRoute: ControlContentRoute,
+  ControlPaymentsRoute: ControlPaymentsRoute,
+  ControlPlayersRoute: ControlPlayersRoute,
+  ControlResultsRoute: ControlResultsRoute,
+  ControlRulesRoute: ControlRulesRoute,
+  ControlSettingsRoute: ControlSettingsRoute,
+  ControlTournamentsRoute: ControlTournamentsRoute,
+  ControlIndexRoute: ControlIndexRoute,
+}
+
+const ControlRouteWithChildren =
+  ControlRoute._addFileChildren(ControlRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRouteWithChildren,
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRoute,
+  ControlRoute: ControlRouteWithChildren,
   DownloadRoute: DownloadRoute,
 }
 export const routeTree = rootRouteImport
