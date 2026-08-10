@@ -31,6 +31,7 @@ import { Route as AppWalletRouteImport } from './routes/app/wallet'
 import { Route as ControlIndexRouteImport } from './routes/control/index'
 import { Route as ControlBannersRouteImport } from './routes/control/banners'
 import { Route as ControlContentRouteImport } from './routes/control/content'
+import { Route as ControlPaymentsRouteImport } from './routes/control/payments'
 import { Route as ControlRulesRouteImport } from './routes/control/rules'
 import { Route as ControlTournamentsRouteImport } from './routes/control/tournaments'
 import { Route as AppTournamentIdRouteImport } from './routes/app/tournament.$id'
@@ -145,6 +146,11 @@ const ControlContentRoute = ControlContentRouteImport.update({
   path: '/content',
   getParentRoute: () => ControlRoute,
 } as any)
+const ControlPaymentsRoute = ControlPaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => ControlRoute,
+} as any)
 const ControlRulesRoute = ControlRulesRouteImport.update({
   id: '/rules',
   path: '/rules',
@@ -181,6 +187,7 @@ export interface FileRoutesByFullPath {
   '/app/wallet': typeof AppWalletRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
+  '/control/payments': typeof ControlPaymentsRoute
   '/control/rules': typeof ControlRulesRoute
   '/control/tournaments': typeof ControlTournamentsRoute
   '/admin/': typeof AdminIndexRoute
@@ -205,6 +212,7 @@ export interface FileRoutesByTo {
   '/app/wallet': typeof AppWalletRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
+  '/control/payments': typeof ControlPaymentsRoute
   '/control/rules': typeof ControlRulesRoute
   '/control/tournaments': typeof ControlTournamentsRoute
   '/admin': typeof AdminIndexRoute
@@ -233,6 +241,7 @@ export interface FileRoutesById {
   '/app/wallet': typeof AppWalletRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
+  '/control/payments': typeof ControlPaymentsRoute
   '/control/rules': typeof ControlRulesRoute
   '/control/tournaments': typeof ControlTournamentsRoute
   '/admin/': typeof AdminIndexRoute
@@ -262,6 +271,7 @@ export interface FileRouteTypes {
     | '/app/wallet'
     | '/control/banners'
     | '/control/content'
+    | '/control/payments'
     | '/control/rules'
     | '/control/tournaments'
     | '/admin/'
@@ -286,6 +296,7 @@ export interface FileRouteTypes {
     | '/app/wallet'
     | '/control/banners'
     | '/control/content'
+    | '/control/payments'
     | '/control/rules'
     | '/control/tournaments'
     | '/admin'
@@ -313,6 +324,7 @@ export interface FileRouteTypes {
     | '/app/wallet'
     | '/control/banners'
     | '/control/content'
+    | '/control/payments'
     | '/control/rules'
     | '/control/tournaments'
     | '/admin/'
@@ -486,6 +498,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ControlContentRouteImport
       parentRoute: typeof ControlRoute
     }
+    '/control/payments': {
+      id: '/control/payments'
+      path: '/payments'
+      fullPath: '/control/payments'
+      preLoaderRoute: typeof ControlPaymentsRouteImport
+      parentRoute: typeof ControlRoute
+    }
     '/control/rules': {
       id: '/control/rules'
       path: '/rules'
@@ -557,6 +576,7 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 interface ControlRouteChildren {
   ControlBannersRoute: typeof ControlBannersRoute
   ControlContentRoute: typeof ControlContentRoute
+  ControlPaymentsRoute: typeof ControlPaymentsRoute
   ControlRulesRoute: typeof ControlRulesRoute
   ControlTournamentsRoute: typeof ControlTournamentsRoute
   ControlIndexRoute: typeof ControlIndexRoute
@@ -565,6 +585,7 @@ interface ControlRouteChildren {
 const ControlRouteChildren: ControlRouteChildren = {
   ControlBannersRoute: ControlBannersRoute,
   ControlContentRoute: ControlContentRoute,
+  ControlPaymentsRoute: ControlPaymentsRoute,
   ControlRulesRoute: ControlRulesRoute,
   ControlTournamentsRoute: ControlTournamentsRoute,
   ControlIndexRoute: ControlIndexRoute,
