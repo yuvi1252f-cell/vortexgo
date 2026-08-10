@@ -31,6 +31,7 @@ import { Route as AppWalletRouteImport } from './routes/app/wallet'
 import { Route as ControlIndexRouteImport } from './routes/control/index'
 import { Route as ControlBannersRouteImport } from './routes/control/banners'
 import { Route as ControlContentRouteImport } from './routes/control/content'
+import { Route as ControlRulesRouteImport } from './routes/control/rules'
 import { Route as AppTournamentIdRouteImport } from './routes/app/tournament.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -143,6 +144,11 @@ const ControlContentRoute = ControlContentRouteImport.update({
   path: '/content',
   getParentRoute: () => ControlRoute,
 } as any)
+const ControlRulesRoute = ControlRulesRouteImport.update({
+  id: '/rules',
+  path: '/rules',
+  getParentRoute: () => ControlRoute,
+} as any)
 const AppTournamentIdRoute = AppTournamentIdRouteImport.update({
   id: '/tournament/$id',
   path: '/tournament/$id',
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/app/wallet': typeof AppWalletRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
+  '/control/rules': typeof ControlRulesRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
   '/control/': typeof ControlIndexRoute
@@ -191,6 +198,7 @@ export interface FileRoutesByTo {
   '/app/wallet': typeof AppWalletRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
+  '/control/rules': typeof ControlRulesRoute
   '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
   '/control': typeof ControlIndexRoute
@@ -217,6 +225,7 @@ export interface FileRoutesById {
   '/app/wallet': typeof AppWalletRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
+  '/control/rules': typeof ControlRulesRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
   '/control/': typeof ControlIndexRoute
@@ -244,6 +253,7 @@ export interface FileRouteTypes {
     | '/app/wallet'
     | '/control/banners'
     | '/control/content'
+    | '/control/rules'
     | '/admin/'
     | '/app/'
     | '/control/'
@@ -266,6 +276,7 @@ export interface FileRouteTypes {
     | '/app/wallet'
     | '/control/banners'
     | '/control/content'
+    | '/control/rules'
     | '/admin'
     | '/app'
     | '/control'
@@ -291,6 +302,7 @@ export interface FileRouteTypes {
     | '/app/wallet'
     | '/control/banners'
     | '/control/content'
+    | '/control/rules'
     | '/admin/'
     | '/app/'
     | '/control/'
@@ -462,6 +474,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ControlContentRouteImport
       parentRoute: typeof ControlRoute
     }
+    '/control/rules': {
+      id: '/control/rules'
+      path: '/rules'
+      fullPath: '/control/rules'
+      preLoaderRoute: typeof ControlRulesRouteImport
+      parentRoute: typeof ControlRoute
+    }
     '/app/tournament/$id': {
       id: '/app/tournament/$id'
       path: '/tournament/$id'
@@ -519,12 +538,14 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 interface ControlRouteChildren {
   ControlBannersRoute: typeof ControlBannersRoute
   ControlContentRoute: typeof ControlContentRoute
+  ControlRulesRoute: typeof ControlRulesRoute
   ControlIndexRoute: typeof ControlIndexRoute
 }
 
 const ControlRouteChildren: ControlRouteChildren = {
   ControlBannersRoute: ControlBannersRoute,
   ControlContentRoute: ControlContentRoute,
+  ControlRulesRoute: ControlRulesRoute,
   ControlIndexRoute: ControlIndexRoute,
 }
 
