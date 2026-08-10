@@ -36,6 +36,7 @@ import { Route as ControlPaymentsRouteImport } from './routes/control/payments'
 import { Route as ControlPlayersRouteImport } from './routes/control/players'
 import { Route as ControlResultsRouteImport } from './routes/control/results'
 import { Route as ControlRulesRouteImport } from './routes/control/rules'
+import { Route as ControlSettingsRouteImport } from './routes/control/settings'
 import { Route as ControlTournamentsRouteImport } from './routes/control/tournaments'
 import { Route as AppTournamentIdRouteImport } from './routes/app/tournament.$id'
 
@@ -174,6 +175,11 @@ const ControlRulesRoute = ControlRulesRouteImport.update({
   path: '/rules',
   getParentRoute: () => ControlRoute,
 } as any)
+const ControlSettingsRoute = ControlSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => ControlRoute,
+} as any)
 const ControlTournamentsRoute = ControlTournamentsRouteImport.update({
   id: '/tournaments',
   path: '/tournaments',
@@ -210,6 +216,7 @@ export interface FileRoutesByFullPath {
   '/control/players': typeof ControlPlayersRoute
   '/control/results': typeof ControlResultsRoute
   '/control/rules': typeof ControlRulesRoute
+  '/control/settings': typeof ControlSettingsRoute
   '/control/tournaments': typeof ControlTournamentsRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
@@ -238,6 +245,7 @@ export interface FileRoutesByTo {
   '/control/players': typeof ControlPlayersRoute
   '/control/results': typeof ControlResultsRoute
   '/control/rules': typeof ControlRulesRoute
+  '/control/settings': typeof ControlSettingsRoute
   '/control/tournaments': typeof ControlTournamentsRoute
   '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
@@ -270,6 +278,7 @@ export interface FileRoutesById {
   '/control/players': typeof ControlPlayersRoute
   '/control/results': typeof ControlResultsRoute
   '/control/rules': typeof ControlRulesRoute
+  '/control/settings': typeof ControlSettingsRoute
   '/control/tournaments': typeof ControlTournamentsRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
@@ -303,6 +312,7 @@ export interface FileRouteTypes {
     | '/control/players'
     | '/control/results'
     | '/control/rules'
+    | '/control/settings'
     | '/control/tournaments'
     | '/admin/'
     | '/app/'
@@ -331,6 +341,7 @@ export interface FileRouteTypes {
     | '/control/players'
     | '/control/results'
     | '/control/rules'
+    | '/control/settings'
     | '/control/tournaments'
     | '/admin'
     | '/app'
@@ -362,6 +373,7 @@ export interface FileRouteTypes {
     | '/control/players'
     | '/control/results'
     | '/control/rules'
+    | '/control/settings'
     | '/control/tournaments'
     | '/admin/'
     | '/app/'
@@ -569,6 +581,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ControlRulesRouteImport
       parentRoute: typeof ControlRoute
     }
+    '/control/settings': {
+      id: '/control/settings'
+      path: '/settings'
+      fullPath: '/control/settings'
+      preLoaderRoute: typeof ControlSettingsRouteImport
+      parentRoute: typeof ControlRoute
+    }
     '/control/tournaments': {
       id: '/control/tournaments'
       path: '/tournaments'
@@ -638,6 +657,7 @@ interface ControlRouteChildren {
   ControlPlayersRoute: typeof ControlPlayersRoute
   ControlResultsRoute: typeof ControlResultsRoute
   ControlRulesRoute: typeof ControlRulesRoute
+  ControlSettingsRoute: typeof ControlSettingsRoute
   ControlTournamentsRoute: typeof ControlTournamentsRoute
   ControlIndexRoute: typeof ControlIndexRoute
 }
@@ -650,6 +670,7 @@ const ControlRouteChildren: ControlRouteChildren = {
   ControlPlayersRoute: ControlPlayersRoute,
   ControlResultsRoute: ControlResultsRoute,
   ControlRulesRoute: ControlRulesRoute,
+  ControlSettingsRoute: ControlSettingsRoute,
   ControlTournamentsRoute: ControlTournamentsRoute,
   ControlIndexRoute: ControlIndexRoute,
 }
