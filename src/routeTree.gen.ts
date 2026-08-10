@@ -29,6 +29,7 @@ import { Route as AppProfileRouteImport } from './routes/app/profile'
 import { Route as AppReferRouteImport } from './routes/app/refer'
 import { Route as AppWalletRouteImport } from './routes/app/wallet'
 import { Route as ControlIndexRouteImport } from './routes/control/index'
+import { Route as ControlAnnouncementsRouteImport } from './routes/control/announcements'
 import { Route as ControlBannersRouteImport } from './routes/control/banners'
 import { Route as ControlContentRouteImport } from './routes/control/content'
 import { Route as ControlPaymentsRouteImport } from './routes/control/payments'
@@ -138,6 +139,11 @@ const ControlIndexRoute = ControlIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ControlRoute,
 } as any)
+const ControlAnnouncementsRoute = ControlAnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
+  getParentRoute: () => ControlRoute,
+} as any)
 const ControlBannersRoute = ControlBannersRouteImport.update({
   id: '/banners',
   path: '/banners',
@@ -197,6 +203,7 @@ export interface FileRoutesByFullPath {
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
+  '/control/announcements': typeof ControlAnnouncementsRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/control/payments': typeof ControlPaymentsRoute
@@ -224,6 +231,7 @@ export interface FileRoutesByTo {
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
+  '/control/announcements': typeof ControlAnnouncementsRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/control/payments': typeof ControlPaymentsRoute
@@ -255,6 +263,7 @@ export interface FileRoutesById {
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
+  '/control/announcements': typeof ControlAnnouncementsRoute
   '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/control/payments': typeof ControlPaymentsRoute
@@ -287,6 +296,7 @@ export interface FileRouteTypes {
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
+    | '/control/announcements'
     | '/control/banners'
     | '/control/content'
     | '/control/payments'
@@ -314,6 +324,7 @@ export interface FileRouteTypes {
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
+    | '/control/announcements'
     | '/control/banners'
     | '/control/content'
     | '/control/payments'
@@ -344,6 +355,7 @@ export interface FileRouteTypes {
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
+    | '/control/announcements'
     | '/control/banners'
     | '/control/content'
     | '/control/payments'
@@ -508,6 +520,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ControlIndexRouteImport
       parentRoute: typeof ControlRoute
     }
+    '/control/announcements': {
+      id: '/control/announcements'
+      path: '/announcements'
+      fullPath: '/control/announcements'
+      preLoaderRoute: typeof ControlAnnouncementsRouteImport
+      parentRoute: typeof ControlRoute
+    }
     '/control/banners': {
       id: '/control/banners'
       path: '/banners'
@@ -612,6 +631,7 @@ const AppRouteChildren: AppRouteChildren = {
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
 interface ControlRouteChildren {
+  ControlAnnouncementsRoute: typeof ControlAnnouncementsRoute
   ControlBannersRoute: typeof ControlBannersRoute
   ControlContentRoute: typeof ControlContentRoute
   ControlPaymentsRoute: typeof ControlPaymentsRoute
@@ -623,6 +643,7 @@ interface ControlRouteChildren {
 }
 
 const ControlRouteChildren: ControlRouteChildren = {
+  ControlAnnouncementsRoute: ControlAnnouncementsRoute,
   ControlBannersRoute: ControlBannersRoute,
   ControlContentRoute: ControlContentRoute,
   ControlPaymentsRoute: ControlPaymentsRoute,
