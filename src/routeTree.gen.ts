@@ -29,6 +29,7 @@ import { Route as AppProfileRouteImport } from './routes/app/profile'
 import { Route as AppReferRouteImport } from './routes/app/refer'
 import { Route as AppWalletRouteImport } from './routes/app/wallet'
 import { Route as ControlIndexRouteImport } from './routes/control/index'
+import { Route as ControlBannersRouteImport } from './routes/control/banners'
 import { Route as ControlContentRouteImport } from './routes/control/content'
 import { Route as AppTournamentIdRouteImport } from './routes/app/tournament.$id'
 
@@ -132,6 +133,11 @@ const ControlIndexRoute = ControlIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ControlRoute,
 } as any)
+const ControlBannersRoute = ControlBannersRouteImport.update({
+  id: '/banners',
+  path: '/banners',
+  getParentRoute: () => ControlRoute,
+} as any)
 const ControlContentRoute = ControlContentRouteImport.update({
   id: '/content',
   path: '/content',
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
+  '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
@@ -182,6 +189,7 @@ export interface FileRoutesByTo {
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
+  '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
@@ -207,6 +215,7 @@ export interface FileRoutesById {
   '/app/profile': typeof AppProfileRoute
   '/app/refer': typeof AppReferRoute
   '/app/wallet': typeof AppWalletRoute
+  '/control/banners': typeof ControlBannersRoute
   '/control/content': typeof ControlContentRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
@@ -233,6 +242,7 @@ export interface FileRouteTypes {
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
+    | '/control/banners'
     | '/control/content'
     | '/admin/'
     | '/app/'
@@ -254,6 +264,7 @@ export interface FileRouteTypes {
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
+    | '/control/banners'
     | '/control/content'
     | '/admin'
     | '/app'
@@ -278,6 +289,7 @@ export interface FileRouteTypes {
     | '/app/profile'
     | '/app/refer'
     | '/app/wallet'
+    | '/control/banners'
     | '/control/content'
     | '/admin/'
     | '/app/'
@@ -436,6 +448,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ControlIndexRouteImport
       parentRoute: typeof ControlRoute
     }
+    '/control/banners': {
+      id: '/control/banners'
+      path: '/banners'
+      fullPath: '/control/banners'
+      preLoaderRoute: typeof ControlBannersRouteImport
+      parentRoute: typeof ControlRoute
+    }
     '/control/content': {
       id: '/control/content'
       path: '/content'
@@ -498,11 +517,13 @@ const AppRouteChildren: AppRouteChildren = {
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
 interface ControlRouteChildren {
+  ControlBannersRoute: typeof ControlBannersRoute
   ControlContentRoute: typeof ControlContentRoute
   ControlIndexRoute: typeof ControlIndexRoute
 }
 
 const ControlRouteChildren: ControlRouteChildren = {
+  ControlBannersRoute: ControlBannersRoute,
   ControlContentRoute: ControlContentRoute,
   ControlIndexRoute: ControlIndexRoute,
 }
